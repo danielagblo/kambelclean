@@ -1,0 +1,40 @@
+[
+  {
+    "id": "1",
+    "name": "Basic",
+    "multiplier": "1.5x",
+    "features": [
+      "Share limited number of ads",
+      "All ads stays promoted for a week"
+    ],
+    "price": "$567",
+    "originalPrice": "$567",
+    "badge": "For you 50% off",
+    "badgeColor": "#374957",
+    "order": 1
+  },
+  {
+    "id": "2",
+    "name": "Business",
+    "multiplier": "4x",
+    "features": [
+      "Pro partnership statushhhh",
+      "All ads stays promoted for a month"
+    ],
+    "price": "$567",
+    "originalPrice": "$567",
+    "order": 2
+  },
+  {
+    "id": "3",
+    "name": "Platinum",
+    "multiplier": "10x",
+    "features": [
+      "Unlimited number of adshhhh",
+      "Sell 10x faster in all categories"
+    ],
+    "price": "$567",
+    "originalPrice": "$567",
+    "order": 3
+  }
+]
