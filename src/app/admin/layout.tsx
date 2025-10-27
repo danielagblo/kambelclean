@@ -13,7 +13,8 @@ import {
   TrendingUp,
   DollarSign,
   ShoppingCart,
-  UserPlus
+  UserPlus,
+  Image
 } from 'lucide-react';
 
 interface User {
@@ -53,11 +54,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   const navigation = [
     { name: 'Dashboard', href: '/admin/dashboard', icon: BarChart3 },
+    { name: 'Analytics', href: '/admin/analytics', icon: BarChart3 },
     { name: 'Business', href: '/admin/business', icon: Users },
     { name: 'Pricing', href: '/admin/pricing', icon: DollarSign },
     { name: 'Users', href: '/admin/users', icon: Users },
     { name: 'Products', href: '/admin/products', icon: Package },
     { name: 'Screenshots', href: '/admin/gallery', icon: BarChart3 },
+    { name: 'Favicon', href: '/admin/favicon', icon: Image },
     { name: 'Settings', href: '/admin/settings', icon: Settings },
   ];
 

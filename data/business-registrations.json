@@ -1,13 +1,24 @@
 [
   {
-    "id": "1761571276603",
+    "id": "1761579214581",
     "name": "Daniel AGBLO",
     "email": "maxigrothweb@gmail.com",
     "phone": "0538853088",
     "businessName": "Bricsky",
-    "category": "Games",
-    "location": "Accra",
-    "submittedAt": "2025-10-27T13:21:16.603Z",
+    "category": "Grocery",
+    "location": "uk",
+    "submittedAt": "2025-10-27T15:33:34.581Z",
     "status": "approved"
+  },
+  {
+    "id": "1761579310834",
+    "name": "Daniel AGBLO",
+    "email": "admin@bestland.com",
+    "phone": "0538853088",
+    "businessName": "Bricsky",
+    "category": "Vehicles",
+    "location": "Accra",
+    "submittedAt": "2025-10-27T15:35:10.834Z",
+    "status": "pending"
   }
 ]

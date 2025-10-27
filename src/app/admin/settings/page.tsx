@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { Save, Bell, Shield, Palette, Database, Globe } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Save, Bell, Shield, Palette, Database, Globe, Calendar } from 'lucide-react';
 
 export default function SettingsPage() {
   const [settings, setSettings] = useState({
@@ -14,6 +14,67 @@ export default function SettingsPage() {
     timezone: 'UTC',
     maintenanceMode: false,
   });
+  const [launchDate, setLaunchDate] = useState('');
+  const [launchDateInput, setLaunchDateInput] = useState('');
+
+  useEffect(() => {
+    const fetchLaunchDate = async () => {
+      try {
+        const response = await fetch('/api/settings/launch-date');
+        if (response.ok) {
+          const data = await response.json();
+          const dateStr = data.launchDate;
+          setLaunchDate(dateStr);
+          
+          // Convert ISO date string to datetime-local format (YYYY-MM-DDTHH:mm)
+          const date = new Date(dateStr);
+          const year = date.getFullYear();
+          const month = String(date.getMonth() + 1).padStart(2, '0');
+          const day = String(date.getDate()).padStart(2, '0');
+          const hours = String(date.getHours()).padStart(2, '0');
+          const minutes = String(date.getMinutes()).padStart(2, '0');
+          
+          setLaunchDateInput(`${year}-${month}-${day}T${hours}:${minutes}`);
+        }
+      } catch (error) {
+        console.error('Error loading launch date:', error);
+      }
+    };
+    fetchLaunchDate();
+  }, []);
+
+  const handleSaveLaunchDate = async () => {
+    if (!launchDateInput) {
+      alert('Please select a launch date');
+      return;
+    }
+
+    try {
+      // Convert datetime-local input to ISO format
+      const date = new Date(launchDateInput);
+      const isoString = date.toISOString();
+      
+      const response = await fetch('/api/settings/launch-date', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ launchDate: isoString }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setLaunchDate(data.settings.launchDate);
+        alert('Launch date updated successfully!');
+      } else {
+        const errorData = await response.json();
+        alert(`Failed to update launch date: ${errorData.error || 'Unknown error'}`);
+      }
+    } catch (error) {
+      console.error('Error updating launch date:', error);
+      alert('Error updating launch date');
+    }
+  };
 
   const handleInputChange = (field: string, value: any) => {
     setSettings(prev => ({
@@ -76,6 +137,29 @@ export default function SettingsPage() {
                   rows={3}
                   className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                 />
+              </div>
+              <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                <h4 className="text-sm font-medium text-blue-900 mb-2 flex items-center">
+                  <Calendar className="h-4 w-4 mr-2" />
+                  Launch Date Setting
+                </h4>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="datetime-local"
+                    value={launchDateInput}
+                    onChange={(e) => setLaunchDateInput(e.target.value)}
+                    className="block flex-1 border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+                  <button
+                    onClick={handleSaveLaunchDate}
+                    className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  >
+                    Update
+                  </button>
+                </div>
+                <p className="text-xs text-blue-700 mt-2">
+                  Current launch date: {launchDate ? new Date(launchDate).toLocaleString() : 'Not set'}
+                </p>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>

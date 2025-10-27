@@ -6,6 +6,8 @@ import {
   ArrowRight,
   CheckCircle,
 } from 'lucide-react';
+import PageTransition from '@/components/PageTransition';
+import FloatingMenu from '@/components/FloatingMenu';
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -82,7 +84,9 @@ export default function RegisterPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <>
+      <PageTransition>
+      <div className="min-h-screen bg-white">
       {/* Main Content */}
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="bg-[#F9F9F9] rounded-2xl shadow-xl p-8 border border-gray-100">
@@ -274,7 +278,7 @@ export default function RegisterPage() {
             </div>
             <div className="flex items-start">
               <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 mr-2 flex-shrink-0" />
-              <span>Registering now secures up to six months free subscription. Launching: 2/12/2025.</span>
+              <span>Registering now secures up to six months free subscription.</span>
             </div>
           </div>
         </div>
@@ -298,47 +302,10 @@ export default function RegisterPage() {
           </div>
         </div>
       </footer>
-
-      {/* Floating Bottom Menu */}
-      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
-        <div className="bg-white rounded-full shadow-2xl px-6 py-3 flex items-center gap-8">
-          {/* Home */}
-          <button 
-            onClick={() => router.push('/landing')}
-            className="flex flex-col items-center justify-center gap-1 group"
-          >
-            <img src="/home.png" alt="Home" className="w-6 h-6" />
-            <span className="text-xs text-gray-700 font-medium">Home</span>
-          </button>
-
-          {/* Pricing */}
-          <button 
-            onClick={() => router.push('/pricing')}
-            className="flex flex-col items-center justify-center gap-1 group"
-          >
-            <img src="/price.png" alt="Pricing" className="w-6 h-6" />
-            <span className="text-xs text-gray-700 font-medium">Pricing</span>
-          </button>
-
-          {/* Register */}
-          <button 
-            onClick={() => router.push('/register')}
-            className="flex flex-col items-center justify-center gap-1 group"
-          >
-            <img src="/register.png" alt="Register" className="w-6 h-6" />
-            <span className="text-xs text-gray-700 font-medium">Register</span>
-          </button>
-
-          {/* About */}
-          <button 
-            onClick={() => router.push('/about')}
-            className="flex flex-col items-center justify-center gap-1 group"
-          >
-            <img src="/about.png" alt="About" className="w-6 h-6" />
-            <span className="text-xs text-gray-700 font-medium">About</span>
-          </button>
-        </div>
       </div>
-    </div>
+      </PageTransition>
+
+      <FloatingMenu />
+    </>
   );
 }

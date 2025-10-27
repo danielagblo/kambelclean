@@ -3,6 +3,8 @@
 import { useRouter } from 'next/navigation';
 import { Check } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import PageTransition from '@/components/PageTransition';
+import FloatingMenu from '@/components/FloatingMenu';
 
 interface PricingPlan {
   id: string;
@@ -40,7 +42,9 @@ export default function PricingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <>
+      <PageTransition>
+      <div className="min-h-screen bg-white flex flex-col">
       <div className="py-16 px-4 sm:px-6 lg:px-8 flex-1">
         <div className="max-w-4xl mx-auto">
         {/* Header */}
@@ -126,47 +130,10 @@ export default function PricingPage() {
           </div>
         </div>
       </footer>
-
-      {/* Floating Bottom Menu */}
-      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
-        <div className="bg-white rounded-full shadow-2xl px-6 py-3 flex items-center gap-8">
-          {/* Home */}
-          <button 
-            onClick={() => router.push('/landing')}
-            className="flex flex-col items-center justify-center gap-1 group"
-          >
-            <img src="/home.png" alt="Home" className="w-6 h-6" />
-            <span className="text-xs text-gray-700 font-medium">Home</span>
-          </button>
-
-          {/* Pricing */}
-          <button 
-            onClick={() => router.push('/pricing')}
-            className="flex flex-col items-center justify-center gap-1 group"
-          >
-            <img src="/price.png" alt="Pricing" className="w-6 h-6" />
-            <span className="text-xs text-gray-700 font-medium">Pricing</span>
-          </button>
-
-          {/* Register */}
-          <button 
-            onClick={() => router.push('/register')}
-            className="flex flex-col items-center justify-center gap-1 group"
-          >
-            <img src="/register.png" alt="Register" className="w-6 h-6" />
-            <span className="text-xs text-gray-700 font-medium">Register</span>
-          </button>
-
-          {/* About */}
-          <button 
-            onClick={() => router.push('/about')}
-            className="flex flex-col items-center justify-center gap-1 group"
-          >
-            <img src="/about.png" alt="About" className="w-6 h-6" />
-            <span className="text-xs text-gray-700 font-medium">About</span>
-          </button>
-        </div>
       </div>
-    </div>
+      </PageTransition>
+
+      <FloatingMenu />
+    </>
   );
 }

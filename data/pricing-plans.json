@@ -1,14 +1,14 @@
 [
   {
     "id": "1",
-    "name": "Basic",
+    "name": "Basick",
     "multiplier": "1.5x",
     "features": [
       "Share limited number of ads",
       "All ads stays promoted for a week"
     ],
-    "price": "$567",
-    "originalPrice": "$567",
+    "price": "5676666",
+    "originalPrice": "567999",
     "badge": "For you 50% off",
     "badgeColor": "#374957",
     "order": 1
@@ -22,7 +22,7 @@
       "All ads stays promoted for a month"
     ],
     "price": "$567",
-    "originalPrice": "$567",
+    "originalPrice": "$567000",
     "order": 2
   },
   {
@@ -34,7 +34,7 @@
       "Sell 10x faster in all categories"
     ],
     "price": "$567",
-    "originalPrice": "$567",
+    "originalPrice": "$567344",
     "order": 3
   }
 ]

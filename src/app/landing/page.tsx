@@ -10,6 +10,8 @@ import {
   User,
   Building2
 } from 'lucide-react';
+import PageTransition from '@/components/PageTransition';
+import FloatingMenu from '@/components/FloatingMenu';
 
 export default function LandingPage() {
   const router = useRouter();
@@ -86,14 +88,16 @@ export default function LandingPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <>
+      <PageTransition>
+      <div className="min-h-screen bg-white">
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Section - Marketing */}
           <div className="space-y-6">
             <div>
-              <h1 className="text-5xl font-bold mb-3 mt-4" style={{ color: '#374957' }}>
+              <h1 className="text-5xl font-bold mb-3 mt-4 font-josefin-sans" style={{ color: '#374957' }}>
                 <div>Sell anything safe,</div>
                 <div>& fast on Oysloe</div>
               </h1>
@@ -305,7 +309,7 @@ export default function LandingPage() {
                 </div>
                 <div className="flex items-start">
                   <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 mr-2 flex-shrink-0" />
-                  <span>Registering now secures up to six months free subscription. Launching: 2/12/2025.</span>
+                  <span>Registering now secures up to six months free subscription.</span>
                 </div>
               </div>
             </div>
@@ -331,44 +335,10 @@ export default function LandingPage() {
           </div>
         </div>
       </footer>
-
-      {/* Floating Bottom Menu */}
-      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
-        <div className="bg-white rounded-full shadow-2xl px-6 py-3 flex items-center gap-8">
-          {/* Home */}
-          <button className="flex flex-col items-center justify-center gap-1 group">
-            <img src="/home.png" alt="Home" className="w-6 h-6" />
-            <span className="text-xs text-gray-700 font-medium">Home</span>
-          </button>
-
-          {/* Pricing */}
-          <button 
-            onClick={() => router.push('/pricing')}
-            className="flex flex-col items-center justify-center gap-1 group"
-          >
-            <img src="/price.png" alt="Pricing" className="w-6 h-6" />
-            <span className="text-xs text-gray-700 font-medium">Pricing</span>
-          </button>
-
-          {/* Register */}
-          <button 
-            onClick={() => router.push('/register')}
-            className="flex flex-col items-center justify-center gap-1 group"
-          >
-            <img src="/register.png" alt="Register" className="w-6 h-6" />
-            <span className="text-xs text-gray-700 font-medium">Register</span>
-          </button>
-
-          {/* About */}
-          <button 
-            onClick={() => router.push('/about')}
-            className="flex flex-col items-center justify-center gap-1 group"
-          >
-            <img src="/about.png" alt="About" className="w-6 h-6" />
-            <span className="text-xs text-gray-700 font-medium">About</span>
-          </button>
-        </div>
       </div>
-    </div>
+      </PageTransition>
+
+      <FloatingMenu />
+    </>
   );
 }
