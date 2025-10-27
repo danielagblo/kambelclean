@@ -3,5 +3,14 @@
   "favicon": {
     "current": "/favicon-1761580706426.png",
     "custom": "/favicon-1761580706426.png"
+  },
+  "whatsappLink": {
+    "url": "https://chat.whatsapp.com/GZHn18SwDkb4F0kQC3LDcr?mode=wwt",
+    "enabled": true
+  },
+  "contactInfo": {
+    "phone": "0552892433",
+    "email": "agblod27@gmail.com",
+    "address": "Lashibi osabu street"
   }
 }

@@ -311,8 +311,152 @@
       "timestamp": "2025-10-27T16:06:13.221Z",
       "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
       "referrer": "http://localhost:3000/admin/business"
+    },
+    {
+      "page": "/register",
+      "timestamp": "2025-10-27T16:08:40.461Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/about"
+    },
+    {
+      "page": "/about",
+      "timestamp": "2025-10-27T16:08:41.717Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/about"
+    },
+    {
+      "page": "/pricing",
+      "timestamp": "2025-10-27T16:10:53.153Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/about"
+    },
+    {
+      "page": "/register",
+      "timestamp": "2025-10-27T16:10:53.882Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/about"
+    },
+    {
+      "page": "/about",
+      "timestamp": "2025-10-27T16:10:55.489Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/about"
+    },
+    {
+      "page": "/admin/dashboard",
+      "timestamp": "2025-10-27T16:29:22.622Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/admin/business"
+    },
+    {
+      "page": "/admin/settings",
+      "timestamp": "2025-10-27T16:29:34.257Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/admin/dashboard"
+    },
+    {
+      "page": "/landing",
+      "timestamp": "2025-10-27T16:31:49.599Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/about"
+    },
+    {
+      "page": "/admin/settings",
+      "timestamp": "2025-10-27T16:32:37.063Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/admin/settings"
+    },
+    {
+      "page": "/admin/gallery",
+      "timestamp": "2025-10-27T16:32:39.418Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/admin/settings"
+    },
+    {
+      "page": "/admin/pricing",
+      "timestamp": "2025-10-27T16:32:41.740Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/admin/gallery"
+    },
+    {
+      "page": "/admin/business",
+      "timestamp": "2025-10-27T16:32:44.070Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/admin/pricing"
+    },
+    {
+      "page": "/admin/analytics",
+      "timestamp": "2025-10-27T16:32:46.898Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/admin/business"
+    },
+    {
+      "page": "/pricing",
+      "timestamp": "2025-10-27T16:33:21.187Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/about"
+    },
+    {
+      "page": "/register",
+      "timestamp": "2025-10-27T16:33:23.803Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/about"
+    },
+    {
+      "page": "/about",
+      "timestamp": "2025-10-27T16:33:37.164Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/about"
+    },
+    {
+      "page": "/admin/analytics",
+      "timestamp": "2025-10-27T16:36:42.454Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/admin/business"
+    },
+    {
+      "page": "/admin/settings",
+      "timestamp": "2025-10-27T16:36:44.214Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/admin/analytics"
+    },
+    {
+      "page": "/about",
+      "timestamp": "2025-10-27T16:37:11.631Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/about"
+    },
+    {
+      "page": "/register",
+      "timestamp": "2025-10-27T16:37:24.727Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/about"
+    },
+    {
+      "page": "/pricing",
+      "timestamp": "2025-10-27T16:37:25.435Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/about"
+    },
+    {
+      "page": "/landing",
+      "timestamp": "2025-10-27T16:37:26.939Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/about"
+    },
+    {
+      "page": "/pricing",
+      "timestamp": "2025-10-27T16:37:30.291Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/about"
+    },
+    {
+      "page": "/register",
+      "timestamp": "2025-10-27T16:37:32.081Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/about"
     }
   ],
   "registrations": [],
-  "lastUpdated": "2025-10-27T16:06:13.221Z"
+  "lastUpdated": "2025-10-27T16:37:32.081Z"
 }

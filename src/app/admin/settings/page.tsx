@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Save, Bell, Shield, Palette, Database, Globe, Calendar } from 'lucide-react';
+import { Save, Bell, Shield, Palette, Database, Globe, Calendar, MessageCircle, Phone, Mail, MapPin } from 'lucide-react';
 
 export default function SettingsPage() {
   const [settings, setSettings] = useState({
@@ -16,6 +16,11 @@ export default function SettingsPage() {
   });
   const [launchDate, setLaunchDate] = useState('');
   const [launchDateInput, setLaunchDateInput] = useState('');
+  const [whatsappUrl, setWhatsappUrl] = useState('');
+  const [whatsappEnabled, setWhatsappEnabled] = useState(true);
+  const [contactPhone, setContactPhone] = useState('');
+  const [contactEmail, setContactEmail] = useState('');
+  const [contactAddress, setContactAddress] = useState('');
 
   useEffect(() => {
     const fetchLaunchDate = async () => {
@@ -40,7 +45,37 @@ export default function SettingsPage() {
         console.error('Error loading launch date:', error);
       }
     };
+
+    const fetchWhatsappSettings = async () => {
+      try {
+        const response = await fetch('/api/settings/whatsapp');
+        if (response.ok) {
+          const data = await response.json();
+          setWhatsappUrl(data.whatsappLink?.url || '');
+          setWhatsappEnabled(data.whatsappLink?.enabled !== false);
+        }
+      } catch (error) {
+        console.error('Error loading WhatsApp settings:', error);
+      }
+    };
+
+    const fetchContactSettings = async () => {
+      try {
+        const response = await fetch('/api/settings/contact');
+        if (response.ok) {
+          const data = await response.json();
+          setContactPhone(data.contactInfo?.phone || '');
+          setContactEmail(data.contactInfo?.email || '');
+          setContactAddress(data.contactInfo?.address || '');
+        }
+      } catch (error) {
+        console.error('Error loading contact settings:', error);
+      }
+    };
+
     fetchLaunchDate();
+    fetchWhatsappSettings();
+    fetchContactSettings();
   }, []);
 
   const handleSaveLaunchDate = async () => {
@@ -73,6 +108,66 @@ export default function SettingsPage() {
     } catch (error) {
       console.error('Error updating launch date:', error);
       alert('Error updating launch date');
+    }
+  };
+
+  const handleSaveWhatsapp = async () => {
+    if (!whatsappUrl.trim()) {
+      alert('Please enter a WhatsApp URL');
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/settings/whatsapp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ url: whatsappUrl, enabled: whatsappEnabled }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setWhatsappUrl(data.whatsappLink.url);
+        setWhatsappEnabled(data.whatsappLink.enabled);
+        alert('WhatsApp link updated successfully!');
+      } else {
+        const errorData = await response.json();
+        alert(`Failed to update WhatsApp link: ${errorData.error || 'Unknown error'}`);
+      }
+    } catch (error) {
+      console.error('Error updating WhatsApp link:', error);
+      alert('Error updating WhatsApp link');
+    }
+  };
+
+  const handleSaveContact = async () => {
+    try {
+      const response = await fetch('/api/settings/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          phone: contactPhone, 
+          email: contactEmail, 
+          address: contactAddress 
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setContactPhone(data.contactInfo.phone);
+        setContactEmail(data.contactInfo.email);
+        setContactAddress(data.contactInfo.address);
+        alert('Contact information updated successfully!');
+      } else {
+        const errorData = await response.json();
+        alert(`Failed to update contact information: ${errorData.error || 'Unknown error'}`);
+      }
+    } catch (error) {
+      console.error('Error updating contact information:', error);
+      alert('Error updating contact information');
     }
   };
 
@@ -160,6 +255,94 @@ export default function SettingsPage() {
                 <p className="text-xs text-blue-700 mt-2">
                   Current launch date: {launchDate ? new Date(launchDate).toLocaleString() : 'Not set'}
                 </p>
+              </div>
+              <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                <h4 className="text-sm font-medium text-green-900 mb-2 flex items-center">
+                  <MessageCircle className="h-4 w-4 mr-2" />
+                  WhatsApp Button Setting
+                </h4>
+                <div className="space-y-2">
+                  <div>
+                    <label className="block text-xs font-medium text-green-900 mb-1">
+                      WhatsApp URL
+                    </label>
+                    <input
+                      type="url"
+                      value={whatsappUrl}
+                      onChange={(e) => setWhatsappUrl(e.target.value)}
+                      placeholder="https://wa.me/+233XXXXXXXXX"
+                      className="block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      id="whatsappEnabled"
+                      checked={whatsappEnabled}
+                      onChange={(e) => setWhatsappEnabled(e.target.checked)}
+                      className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
+                    />
+                    <label htmlFor="whatsappEnabled" className="text-sm text-green-900">
+                      Enable WhatsApp button on forms
+                    </label>
+                  </div>
+                  <button
+                    onClick={handleSaveWhatsapp}
+                    className="w-full px-4 py-2 bg-green-600 text-white text-sm font-medium rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+                  >
+                    Update WhatsApp Link
+                  </button>
+                </div>
+              </div>
+              <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                <h4 className="text-sm font-medium text-purple-900 mb-2 flex items-center">
+                  <Phone className="h-4 w-4 mr-2" />
+                  Contact Information
+                </h4>
+                <div className="space-y-3">
+                  <div>
+                    <label className="block text-xs font-medium text-purple-900 mb-1">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      value={contactPhone}
+                      onChange={(e) => setContactPhone(e.target.value)}
+                      placeholder="+233 24 XXX XXXX"
+                      className="block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-medium text-purple-900 mb-1">
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      value={contactEmail}
+                      onChange={(e) => setContactEmail(e.target.value)}
+                      placeholder="contact@bestland.com"
+                      className="block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-medium text-purple-900 mb-1">
+                      Address
+                    </label>
+                    <textarea
+                      value={contactAddress}
+                      onChange={(e) => setContactAddress(e.target.value)}
+                      placeholder="123 Main Street, City, Country"
+                      rows={2}
+                      className="block w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    />
+                  </div>
+                  <button
+                    onClick={handleSaveContact}
+                    className="w-full px-4 py-2 bg-purple-600 text-white text-sm font-medium rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  >
+                    Update Contact Information
+                  </button>
+                </div>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>

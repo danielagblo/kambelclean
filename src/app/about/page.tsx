@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { CheckCircle, Star, Users, TrendingUp, Smartphone, ArrowRight, Zap, Shield, Globe, Award, Target, Heart, Sparkles, Lock, BarChart, Globe2, Rocket, Briefcase, Circle as CircleIcon } from 'lucide-react';
+import { CheckCircle, Star, Users, TrendingUp, Smartphone, ArrowRight, Zap, Shield, Globe, Award, Target, Heart, Sparkles, Lock, BarChart, Globe2, Rocket, Briefcase, Circle as CircleIcon, Phone, Mail, MapPin } from 'lucide-react';
 import PageTransition from '@/components/PageTransition';
 import CountdownTimer from '@/components/CountdownTimer';
 import FloatingMenu from '@/components/FloatingMenu';
@@ -16,6 +16,11 @@ export default function AboutPage() {
     usersWaiting: 0,
     waitingAds: 0,
     satisfaction: 96
+  });
+  const [contactInfo, setContactInfo] = useState({
+    phone: '',
+    email: '',
+    address: ''
   });
 
   useEffect(() => {
@@ -66,6 +71,21 @@ export default function AboutPage() {
       }
     };
     fetchStats();
+  }, []);
+
+  useEffect(() => {
+    const fetchContactInfo = async () => {
+      try {
+        const response = await fetch('/api/settings/contact');
+        if (response.ok) {
+          const data = await response.json();
+          setContactInfo(data.contactInfo || { phone: '', email: '', address: '' });
+        }
+      } catch (error) {
+        console.error('Error loading contact info:', error);
+      }
+    };
+    fetchContactInfo();
   }, []);
 
   // Auto-advance carousel
@@ -334,6 +354,59 @@ export default function AboutPage() {
               </div>
               <div className="text-4xl font-bold text-white mb-2">{stats.satisfaction}%</div>
               <div className="text-lg text-gray-200">Satisfaction</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Information Section */}
+      <section className="bg-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-12" style={{ color: '#374957' }}>Contact Us</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Phone */}
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style={{ backgroundColor: '#F3F4F6' }}>
+                <Phone className="h-8 w-8" style={{ color: '#374957' }} />
+              </div>
+              <h3 className="text-lg font-semibold mb-2" style={{ color: '#374957' }}>Phone</h3>
+              {contactInfo.phone ? (
+                <a href={`tel:${contactInfo.phone}`} className="text-sm hover:underline" style={{ color: '#374957' }}>
+                  {contactInfo.phone}
+                </a>
+              ) : (
+                <p className="text-sm text-gray-500">Not set</p>
+              )}
+            </div>
+
+            {/* Email */}
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style={{ backgroundColor: '#F3F4F6' }}>
+                <Mail className="h-8 w-8" style={{ color: '#374957' }} />
+              </div>
+              <h3 className="text-lg font-semibold mb-2" style={{ color: '#374957' }}>Email</h3>
+              {contactInfo.email ? (
+                <a href={`mailto:${contactInfo.email}`} className="text-sm hover:underline" style={{ color: '#374957' }}>
+                  {contactInfo.email}
+                </a>
+              ) : (
+                <p className="text-sm text-gray-500">Not set</p>
+              )}
+            </div>
+
+            {/* Address */}
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style={{ backgroundColor: '#F3F4F6' }}>
+                <MapPin className="h-8 w-8" style={{ color: '#374957' }} />
+              </div>
+              <h3 className="text-lg font-semibold mb-2" style={{ color: '#374957' }}>Address</h3>
+              {contactInfo.address ? (
+                <p className="text-sm" style={{ color: '#374957' }}>
+                  {contactInfo.address}
+                </p>
+              ) : (
+                <p className="text-sm text-gray-500">Not set</p>
+              )}
             </div>
           </div>
         </div>
