@@ -1,4 +1,6 @@
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="32" height="32" rx="6" fill="#374957"/>
-  <text x="16" y="22" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="white">B</text>
+  <!-- White background -->
+  <rect width="32" height="32" fill="white"/>
+  <!-- Dark blue ring -->
+  <circle cx="16" cy="16" r="12" fill="none" stroke="#374957" stroke-width="4"/>
 </svg>

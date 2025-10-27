@@ -194,7 +194,6 @@ export default function FaviconPage() {
                       id="favicon-upload"
                       name="favicon-upload"
                       type="file"
-                      accept="image/*"
                       onChange={handleFileUpload}
                       disabled={uploading}
                       className="sr-only"
@@ -203,7 +202,7 @@ export default function FaviconPage() {
                   <p className="pl-1">or drag and drop</p>
                 </div>
                 <p className="text-xs text-gray-500">
-                  PNG, JPG, GIF, SVG up to 1MB
+                  Upload any file
                 </p>
               </div>
             </div>
@@ -216,21 +215,6 @@ export default function FaviconPage() {
             </div>
           )}
         </div>
-      </div>
-
-      {/* Guidelines */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-        <h4 className="text-md font-medium text-blue-900 mb-2 flex items-center">
-          <AlertCircle className="h-5 w-5 mr-2" />
-          Favicon Guidelines
-        </h4>
-        <ul className="text-sm text-blue-800 space-y-1">
-          <li>• Recommended size: 32x32 pixels or 16x16 pixels</li>
-          <li>• Supported formats: PNG, JPG, GIF, SVG, ICO</li>
-          <li>• Maximum file size: 1MB</li>
-          <li>• Simple designs work best at small sizes</li>
-          <li>• The favicon will appear in browser tabs and bookmarks</li>
-        </ul>
       </div>
 
       {/* Message Display */}

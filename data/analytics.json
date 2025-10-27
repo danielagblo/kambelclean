@@ -455,8 +455,44 @@
       "timestamp": "2025-10-27T16:37:32.081Z",
       "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
       "referrer": "http://localhost:3000/about"
+    },
+    {
+      "page": "/admin/settings",
+      "timestamp": "2025-10-27T16:47:20.397Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/admin/analytics"
+    },
+    {
+      "page": "/admin/settings",
+      "timestamp": "2025-10-27T16:47:21.933Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/admin/analytics"
+    },
+    {
+      "page": "/admin/settings",
+      "timestamp": "2025-10-27T16:47:30.708Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/admin/analytics"
+    },
+    {
+      "page": "/admin/favicon",
+      "timestamp": "2025-10-27T16:47:33.613Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/admin/settings"
+    },
+    {
+      "page": "/admin/favicon",
+      "timestamp": "2025-10-27T16:47:40.512Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/admin/favicon"
+    },
+    {
+      "page": "/admin/favicon",
+      "timestamp": "2025-10-27T16:50:32.866Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/admin/favicon"
     }
   ],
   "registrations": [],
-  "lastUpdated": "2025-10-27T16:37:32.081Z"
+  "lastUpdated": "2025-10-27T16:50:32.866Z"
 }

@@ -67,21 +67,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Validate file type
-    if (!file.type.startsWith('image/')) {
-      return NextResponse.json(
-        { error: 'File must be an image' },
-        { status: 400 }
-      );
-    }
-
-    // Validate file size (max 1MB)
-    if (file.size > 1024 * 1024) {
-      return NextResponse.json(
-        { error: 'File size must be less than 1MB' },
-        { status: 400 }
-      );
-    }
+    // Accept any file type - no restrictions
 
     // Convert file to buffer
     const bytes = await file.arrayBuffer();
