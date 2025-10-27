@@ -299,8 +299,20 @@
       "timestamp": "2025-10-27T16:01:02.596Z",
       "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
       "referrer": "http://localhost:3000/admin/business"
+    },
+    {
+      "page": "/login",
+      "timestamp": "2025-10-27T16:05:39.139Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/admin/business"
+    },
+    {
+      "page": "/admin/dashboard",
+      "timestamp": "2025-10-27T16:06:13.221Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/admin/business"
     }
   ],
   "registrations": [],
-  "lastUpdated": "2025-10-27T16:01:02.596Z"
+  "lastUpdated": "2025-10-27T16:06:13.221Z"
 }

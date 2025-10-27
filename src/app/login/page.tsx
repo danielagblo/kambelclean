@@ -125,13 +125,6 @@ export default function LoginPage() {
                 )}
               </button>
             </div>
-
-            <div className="text-center">
-              <p className="text-sm text-gray-600">
-                Demo credentials: <br />
-                <span className="font-medium">admin@bestland.com</span> / <span className="font-medium">admin123</span>
-              </p>
-            </div>
           </form>
         </div>
       </div>
