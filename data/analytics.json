@@ -515,8 +515,26 @@
       "timestamp": "2025-10-28T08:44:21.078Z",
       "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
       "referrer": "Direct"
+    },
+    {
+      "page": "/about",
+      "timestamp": "2025-10-28T08:55:40.381Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/about"
+    },
+    {
+      "page": "/about",
+      "timestamp": "2025-10-28T08:56:00.043Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/about"
+    },
+    {
+      "page": "/about",
+      "timestamp": "2025-10-28T08:56:09.668Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "http://localhost:3000/about"
     }
   ],
   "registrations": [],
-  "lastUpdated": "2025-10-28T08:44:21.078Z"
+  "lastUpdated": "2025-10-28T08:56:09.668Z"
 }

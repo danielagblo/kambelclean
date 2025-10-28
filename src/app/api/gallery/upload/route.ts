@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { writeFile } from 'fs/promises';
+import { writeFile, mkdir } from 'fs/promises';
 import path from 'path';
+
+// Disable caching for this route
+export const dynamic = 'force-dynamic';
 
 export async function POST(request: NextRequest) {
   try {
@@ -28,7 +31,10 @@ export async function POST(request: NextRequest) {
     const filePath = path.join(publicPath, filename);
 
     // Ensure gallery directory exists
+    await mkdir(publicPath, { recursive: true });
     await writeFile(filePath, buffer);
+    
+    console.log(`Image uploaded successfully: ${filename} to ${filePath}`);
 
     return NextResponse.json({
       success: true,
@@ -38,7 +44,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Upload error:', error);
     return NextResponse.json(
-      { error: 'Failed to upload image' },
+      { error: 'Failed to upload image', details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }
     );
   }

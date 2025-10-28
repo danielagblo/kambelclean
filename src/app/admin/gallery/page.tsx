@@ -52,10 +52,14 @@ export default function GalleryPage() {
       });
 
       if (response.ok) {
+        const result = await response.json();
+        console.log('Upload successful:', result);
         await loadImages();
         alert('App screenshot uploaded successfully!');
       } else {
-        alert('Failed to upload image');
+        const error = await response.json();
+        console.error('Upload failed:', error);
+        alert(`Failed to upload image: ${error.details || error.error || 'Unknown error'}`);
       }
     } catch (error) {
       console.error('Upload error:', error);
