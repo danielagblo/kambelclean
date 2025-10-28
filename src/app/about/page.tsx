@@ -151,7 +151,7 @@ export default function AboutPage() {
       <div className="min-h-screen bg-white">
       {/* App Screenshots Carousel */}
       {carouselImages.length > 0 && (
-        <section className="py-24">
+        <section className="py-24 hidden md:block">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Horizontal Sliding Carousel */}
             <div className="relative overflow-hidden">

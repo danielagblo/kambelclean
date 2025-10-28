@@ -62,11 +62,11 @@ export default function GalleryPage() {
     }
   };
 
-  const handleDelete = async (id: number) => {
+  const handleDelete = async (id: number, filename: string) => {
     if (!confirm('Are you sure you want to delete this screenshot?')) return;
 
     try {
-      const response = await fetch(`/api/gallery/${id}`, {
+      const response = await fetch(`/api/gallery/${id}?filename=${encodeURIComponent(filename)}`, {
         method: 'DELETE',
       });
 
@@ -163,7 +163,7 @@ export default function GalleryPage() {
                     <Eye className="h-5 w-5 text-gray-700" />
                   </button>
                   <button
-                    onClick={() => handleDelete(image.id)}
+                    onClick={() => handleDelete(image.id, image.filename)}
                     className="opacity-0 group-hover:opacity-100 bg-red-500 rounded-full p-2 transition-opacity"
                   >
                     <Trash2 className="h-5 w-5 text-white" />
