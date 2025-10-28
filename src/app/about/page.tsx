@@ -154,10 +154,10 @@ export default function AboutPage() {
         <section className="py-24">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Horizontal Sliding Carousel */}
-            <div className="relative">
+            <div className="relative overflow-hidden">
               {/* All images on one line with center image larger */}
-              <div className="overflow-x-auto px-4">
-                <div className="flex gap-4 justify-center items-end" style={{ minWidth: 'fit-content' }}>
+              <div className="overflow-hidden px-4">
+                <div className="flex gap-4 justify-center items-end">
                   {carouselImages.map((imageUrl, index) => (
                     <button
                       key={index}
