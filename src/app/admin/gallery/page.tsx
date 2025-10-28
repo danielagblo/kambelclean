@@ -23,7 +23,10 @@ export default function GalleryPage() {
 
   const loadImages = async () => {
     try {
-      const response = await fetch('/api/gallery');
+      // Add cache busting to force fresh data
+      const response = await fetch(`/api/gallery?t=${Date.now()}`, {
+        cache: 'no-store'
+      });
       if (response.ok) {
         const data = await response.json();
         setImages(data.images);

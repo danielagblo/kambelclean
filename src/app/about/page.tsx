@@ -26,7 +26,10 @@ export default function AboutPage() {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const response = await fetch('/api/gallery');
+        // Add cache busting to force fresh data
+        const response = await fetch(`/api/gallery?t=${Date.now()}`, {
+          cache: 'no-store'
+        });
         if (response.ok) {
           const data = await response.json();
           setCarouselImages(data.images.map((img: any) => img.url));
@@ -148,7 +151,7 @@ export default function AboutPage() {
   return (
     <>
       <PageTransition>
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white overflow-x-hidden md:overflow-x-visible">
       {/* App Screenshots Carousel */}
       {carouselImages.length > 0 && (
         <section className="py-24 hidden md:block">
