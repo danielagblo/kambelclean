@@ -14,7 +14,10 @@ import {
   CheckCircle,
   MapPin,
   Phone,
-  Mail
+  Mail,
+  UserCircle,
+  Star,
+  Lightbulb
 } from 'lucide-react';
 import PageTransition from '@/components/PageTransition';
 import FloatingMenu from '@/components/FloatingMenu';
@@ -157,6 +160,112 @@ export default function AboutPage() {
                 strategic guidance, and transformative learning experiences. We are committed to delivering exceptional 
                 value and fostering sustainable growth for our clients.
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* CEO Highlight Section */}
+        <section className="py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-blue-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
+                Meet Our CEO
+              </h2>
+              <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+                Visionary leadership driving excellence and innovation
+              </p>
+            </div>
+
+            <div className="max-w-5xl mx-auto">
+              <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-200">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-0">
+                  {/* CEO Image/Icon Section */}
+                  <div className="lg:col-span-1 bg-gradient-to-br from-blue-600 to-purple-600 p-8 lg:p-12 flex flex-col items-center justify-center text-white">
+                    <div className="w-32 h-32 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-6 backdrop-blur-sm border-4 border-white border-opacity-30">
+                      <UserCircle className="w-20 h-20 text-white" />
+                    </div>
+                    <h3 className="text-3xl font-bold mb-2">Sir Katamani</h3>
+                    <p className="text-xl text-blue-100 mb-4">Chief Executive Officer</p>
+                    <div className="flex gap-2">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-5 h-5 fill-yellow-300 text-yellow-300" />
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* CEO Details Section */}
+                  <div className="lg:col-span-2 p-8 lg:p-12">
+                    <div className="space-y-6">
+                      <div>
+                        <h4 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                          <Award className="w-6 h-6 text-blue-600" />
+                          Leadership Excellence
+                        </h4>
+                        <p className="text-slate-600 leading-relaxed">
+                          Sir Katamani brings decades of strategic leadership and visionary thinking to Kambel Consult. 
+                          With an unwavering commitment to excellence and innovation, he has guided the organization 
+                          to become a trusted partner for businesses seeking transformative growth.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h4 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                          <Lightbulb className="w-6 h-6 text-purple-600" />
+                          Vision & Expertise
+                        </h4>
+                        <p className="text-slate-600 leading-relaxed mb-4">
+                          Under Sir Katamani's leadership, Kambel Consult has expanded its reach across multiple industries, 
+                          delivering groundbreaking consulting solutions and fostering a culture of continuous learning 
+                          through masterclass programs and thought leadership publications.
+                        </p>
+                        <p className="text-slate-600 leading-relaxed">
+                          His expertise spans business strategy, organizational development, and transformational leadership, 
+                          making him a sought-after advisor for C-suite executives and business leaders worldwide.
+                        </p>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-gray-200">
+                        <div className="flex items-start gap-3">
+                          <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <Briefcase className="w-5 h-5 text-blue-600" />
+                          </div>
+                          <div>
+                            <h5 className="font-semibold text-slate-900 mb-1">Strategic Vision</h5>
+                            <p className="text-sm text-slate-600">Leading transformative business strategies</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <GraduationCap className="w-5 h-5 text-purple-600" />
+                          </div>
+                          <div>
+                            <h5 className="font-semibold text-slate-900 mb-1">Thought Leadership</h5>
+                            <p className="text-sm text-slate-600">Author and industry expert</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <Users className="w-5 h-5 text-green-600" />
+                          </div>
+                          <div>
+                            <h5 className="font-semibold text-slate-900 mb-1">Mentorship</h5>
+                            <p className="text-sm text-slate-600">Empowering next-generation leaders</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <TrendingUp className="w-5 h-5 text-orange-600" />
+                          </div>
+                          <div>
+                            <h5 className="font-semibold text-slate-900 mb-1">Growth Catalyst</h5>
+                            <p className="text-sm text-slate-600">Driving organizational excellence</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
