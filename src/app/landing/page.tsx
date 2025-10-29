@@ -87,12 +87,22 @@ export default function LandingPage() {
       <PageTransition>
       <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20 lg:py-32">
+      <section className="bg-gradient-to-br from-[#000080] via-[#000060] to-[#000080] text-white py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
+            <div className="mb-8 flex justify-center">
+              <img
+                src="/klogo.jpeg"
+                alt="Kambel Consult Logo"
+                className="h-24 md:h-32 w-auto"
+              />
+            </div>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Kambel Consult
+              <span className="text-white">
+                KAMBEL
+              </span>
+              <span className="text-[#39B54A] ml-2">
+                CONSULT
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto">
@@ -101,14 +111,14 @@ export default function LandingPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={() => router.push('/#services')}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 flex items-center justify-center gap-2"
+                className="bg-[#39B54A] hover:bg-[#2A8F39] text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg"
               >
                 Our Services
                 <ArrowRight className="h-5 w-5" />
               </button>
               <button
                 onClick={() => router.push('/masterclasses')}
-                className="bg-slate-700 hover:bg-slate-600 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105"
+                className="bg-[#FFF200] hover:bg-[#E6D900] text-[#000080] px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 shadow-lg"
               >
                 View Masterclasses
               </button>
@@ -136,14 +146,14 @@ export default function LandingPage() {
                   key={service.id}
                   className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
                 >
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-[#39B54A] to-[#2A8F39] rounded-lg flex items-center justify-center mb-6">
                     <Briefcase className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-4">{service.title}</h3>
+                  <h3 className="text-2xl font-bold text-[#000080] mb-4">{service.title}</h3>
                   <p className="text-slate-600 leading-relaxed mb-6">{service.description}</p>
                   <button
                     onClick={() => router.push('/contact')}
-                    className="text-blue-600 font-semibold flex items-center gap-2 hover:text-blue-700 transition-colors"
+                    className="text-[#39B54A] font-semibold flex items-center gap-2 hover:text-[#2A8F39] transition-colors"
                   >
                     Learn More
                     <ArrowRight className="h-4 w-4" />
@@ -158,14 +168,14 @@ export default function LandingPage() {
                   key={service.id}
                   className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
                 >
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-[#39B54A] to-[#2A8F39] rounded-lg flex items-center justify-center mb-6">
                     <Briefcase className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-4">{service.title}</h3>
+                  <h3 className="text-2xl font-bold text-[#000080] mb-4">{service.title}</h3>
                   <p className="text-slate-600 leading-relaxed mb-6">{service.description}</p>
                   <button
                     onClick={() => router.push('/contact')}
-                    className="text-blue-600 font-semibold flex items-center gap-2 hover:text-blue-700 transition-colors"
+                    className="text-[#39B54A] font-semibold flex items-center gap-2 hover:text-[#2A8F39] transition-colors"
                   >
                     Learn More
                     <ArrowRight className="h-4 w-4" />
@@ -188,14 +198,14 @@ export default function LandingPage() {
                   key={index}
                   className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
                 >
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-[#39B54A] to-[#2A8F39] rounded-lg flex items-center justify-center mb-6">
                     <Briefcase className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-4">{service.title}</h3>
+                  <h3 className="text-2xl font-bold text-[#000080] mb-4">{service.title}</h3>
                   <p className="text-slate-600 leading-relaxed mb-6">{service.description}</p>
                   <button
                     onClick={() => router.push('/contact')}
-                    className="text-blue-600 font-semibold flex items-center gap-2 hover:text-blue-700 transition-colors"
+                    className="text-[#39B54A] font-semibold flex items-center gap-2 hover:text-[#2A8F39] transition-colors"
                   >
                     Learn More
                     <ArrowRight className="h-4 w-4" />
@@ -223,31 +233,31 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="h-10 w-10 text-blue-600" />
+              <div className="w-20 h-20 bg-[#39B54A] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="h-10 w-10 text-[#39B54A]" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Expert Team</h3>
+              <h3 className="text-xl font-bold text-[#000080] mb-2">Expert Team</h3>
               <p className="text-slate-600">Experienced consultants with proven track records</p>
             </div>
             <div className="text-center">
-              <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Target className="h-10 w-10 text-purple-600" />
+              <div className="w-20 h-20 bg-[#000080] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Target className="h-10 w-10 text-[#000080]" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Tailored Solutions</h3>
+              <h3 className="text-xl font-bold text-[#000080] mb-2">Tailored Solutions</h3>
               <p className="text-slate-600">Customized strategies for your unique needs</p>
             </div>
             <div className="text-center">
-              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <TrendingUp className="h-10 w-10 text-green-600" />
+              <div className="w-20 h-20 bg-[#FFF200] bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <TrendingUp className="h-10 w-10 text-[#FFF200]" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Proven Results</h3>
+              <h3 className="text-xl font-bold text-[#000080] mb-2">Proven Results</h3>
               <p className="text-slate-600">Measurable outcomes and business growth</p>
             </div>
             <div className="text-center">
-              <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="h-10 w-10 text-orange-600" />
+              <div className="w-20 h-20 bg-[#39B54A] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Award className="h-10 w-10 text-[#39B54A]" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Industry Expertise</h3>
+              <h3 className="text-xl font-bold text-[#000080] mb-2">Industry Expertise</h3>
               <p className="text-slate-600">Deep knowledge across multiple sectors</p>
             </div>
           </div>
@@ -255,17 +265,17 @@ export default function LandingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-[#39B54A] to-[#2A8F39] text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Ready to Transform Your Business?
           </h2>
-          <p className="text-xl mb-8 text-blue-100">
+          <p className="text-xl mb-8 text-white opacity-90">
             Get in touch with us today to discuss how we can help you achieve your goals
           </p>
           <button
             onClick={() => router.push('/contact')}
-            className="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-all transform hover:scale-105"
+            className="bg-white text-[#000080] px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#FFF200] transition-all transform hover:scale-105 shadow-lg"
           >
             Contact Us Now
           </button>
@@ -284,12 +294,12 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-[#000080] rounded-full flex items-center justify-center mx-auto mb-4">
                 <Phone className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 text-slate-900">Phone</h3>
+              <h3 className="text-lg font-semibold mb-2 text-[#000080]">Phone</h3>
               {contactInfo.phone ? (
-                <a href={`tel:${contactInfo.phone}`} className="text-slate-600 hover:text-blue-600">
+                <a href={`tel:${contactInfo.phone}`} className="text-slate-600 hover:text-[#39B54A]">
                   {contactInfo.phone}
                 </a>
               ) : (
@@ -297,12 +307,12 @@ export default function LandingPage() {
               )}
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-[#39B54A] rounded-full flex items-center justify-center mx-auto mb-4">
                 <Mail className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 text-slate-900">Email</h3>
+              <h3 className="text-lg font-semibold mb-2 text-[#000080]">Email</h3>
               {contactInfo.email ? (
-                <a href={`mailto:${contactInfo.email}`} className="text-slate-600 hover:text-blue-600">
+                <a href={`mailto:${contactInfo.email}`} className="text-slate-600 hover:text-[#39B54A]">
                   {contactInfo.email}
                 </a>
               ) : (
@@ -310,10 +320,10 @@ export default function LandingPage() {
               )}
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-[#000080] rounded-full flex items-center justify-center mx-auto mb-4">
                 <MapPin className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 text-slate-900">Address</h3>
+              <h3 className="text-lg font-semibold mb-2 text-[#000080]">Address</h3>
               {contactInfo.address ? (
                 <p className="text-slate-600">{contactInfo.address}</p>
               ) : (
@@ -325,9 +335,16 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-900 text-white py-8">
+      <footer className="bg-[#000080] text-white py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-sm text-slate-400">
+          <div className="mb-4">
+            <img
+              src="/klogo.jpeg"
+              alt="Kambel Consult Logo"
+              className="h-12 w-auto mx-auto"
+            />
+          </div>
+          <p className="text-sm text-white opacity-90">
             &copy; {new Date().getFullYear()} Kambel Consult. All rights reserved.
           </p>
         </div>

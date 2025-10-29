@@ -28,15 +28,15 @@ export default function FloatingMenu() {
               key={item.path}
               onClick={() => router.push(item.path)}
               className={`flex flex-col items-center justify-center gap-1 group p-2 rounded-full transition-all duration-300 hover:bg-gray-50 hover:scale-110 hover:shadow-lg min-w-[60px] ${
-                isActive ? 'bg-blue-50' : ''
+                isActive ? 'bg-[#39B54A] bg-opacity-10' : ''
               }`}
             >
               <Icon className={`w-5 h-5 transition-transform duration-300 group-hover:scale-110 ${
-                isActive ? 'text-blue-600' : 'text-gray-700'
+                isActive ? 'text-[#39B54A]' : 'text-gray-700'
               }`} />
               <span className={`text-xs font-medium transition-colors duration-300 ${
-                isActive ? 'text-blue-600' : 'text-gray-700'
-              } group-hover:text-blue-600`}>
+                isActive ? 'text-[#39B54A]' : 'text-gray-700'
+              } group-hover:text-[#39B54A]`}>
                 {item.label}
               </span>
             </button>

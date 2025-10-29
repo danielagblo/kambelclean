@@ -3,6 +3,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Kambel Consult Brand Colors */
+  --brand-green: #39B54A;
+  --brand-yellow: #FFF200;
+  --brand-blue: #000080;
+  --brand-dark-blue: #000060;
+  --brand-light-green: #5FD470;
+  --brand-dark-green: #2A8F39;
 }
 
 @theme inline {
@@ -14,8 +21,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #171717;
   }
 }
 

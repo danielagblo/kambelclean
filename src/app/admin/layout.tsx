@@ -16,7 +16,8 @@ import {
   UserPlus,
   Image,
   Briefcase,
-  MessageSquare
+  MessageSquare,
+  UserCircle
 } from 'lucide-react';
 
 interface User {
@@ -60,6 +61,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { name: 'Masterclasses', href: '/admin/masterclasses', icon: GraduationCap },
     { name: 'Contact Messages', href: '/admin/messages', icon: MessageSquare },
     { name: 'Newsletter', href: '/admin/newsletter', icon: Mail },
+    { name: 'About Page', href: '/admin/about', icon: UserCircle },
     { name: 'Gallery', href: '/admin/gallery', icon: Image },
     { name: 'Settings', href: '/admin/settings', icon: Settings },
   ];

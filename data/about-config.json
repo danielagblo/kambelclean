@@ -1,0 +1,181 @@
+{
+  "mission": {
+    "title": "Our Mission",
+    "description": "To empower businesses and individuals to achieve their fullest potential through expert consulting, strategic guidance, and transformative learning experiences. We are committed to delivering exceptional value and fostering sustainable growth for our clients."
+  },
+  "ceo": {
+    "name": "Sir Katamani",
+    "title": "Chief Executive Officer",
+    "rating": 5,
+    "leadership": "Sir Katamani brings decades of strategic leadership and visionary thinking to Kambel Consult. With an unwavering commitment to excellence and innovation, he has guided the organization to become a trusted partner for businesses seeking transformative growth.",
+    "vision": "Under Sir Katamani's leadership, Kambel Consult has expanded its reach across multiple industries, delivering groundbreaking consulting solutions and fostering a culture of continuous learning through masterclass programs and thought leadership publications.\n\nHis expertise spans business strategy, organizational development, and transformational leadership, making him a sought-after advisor for C-suite executives and business leaders worldwide.",
+    "highlights": [
+      {
+        "icon": "Briefcase",
+        "title": "Strategic Vision",
+        "description": "Leading transformative business strategies"
+      },
+      {
+        "icon": "GraduationCap",
+        "title": "Thought Leadership",
+        "description": "Author and industry expert"
+      },
+      {
+        "icon": "Users",
+        "title": "Mentorship",
+        "description": "Empowering next-generation leaders"
+      },
+      {
+        "icon": "TrendingUp",
+        "title": "Growth Catalyst",
+        "description": "Driving organizational excellence"
+      }
+    ]
+  },
+  "education": [
+    {
+      "type": "Executive Education",
+      "icon": "School",
+      "description": "Advanced leadership programs and executive education from leading institutions, focusing on strategic management, organizational development, and transformative leadership.",
+      "tags": ["Strategic Leadership", "Business Administration", "Organizational Psychology"]
+    },
+    {
+      "type": "Professional Certifications",
+      "icon": "GraduationCap",
+      "description": "Certified in multiple professional disciplines including consulting methodologies, change management, and executive coaching from internationally recognized bodies.",
+      "tags": ["Certified Consultant", "Executive Coach", "Change Management", "Strategic Planning"]
+    },
+    {
+      "type": "Continuing Education",
+      "icon": "BookOpen",
+      "description": "Committed to lifelong learning through ongoing participation in workshops, seminars, and advanced training programs to stay at the forefront of industry best practices and emerging trends in business consulting and leadership development."
+    }
+  ],
+  "achievements": [
+    {
+      "title": "Excellence in Consulting",
+      "year": "2023",
+      "description": "Recognized for outstanding achievement in providing strategic consulting services and delivering measurable results for clients.",
+      "icon": "Trophy"
+    },
+    {
+      "title": "Leadership Development Excellence",
+      "year": "2022",
+      "description": "Honored for innovative masterclass programs and contribution to developing the next generation of business leaders.",
+      "icon": "Medal"
+    },
+    {
+      "title": "Thought Leadership",
+      "year": "2021",
+      "description": "Acknowledged for influential publications and research contributions that have shaped industry thinking and best practices.",
+      "icon": "Award"
+    },
+    {
+      "title": "Client Excellence Award",
+      "year": "Multiple Years",
+      "description": "Recognized for exceptional client satisfaction and commitment to delivering transformative business solutions.",
+      "icon": "Users"
+    },
+    {
+      "title": "Business Innovation",
+      "year": "2020",
+      "description": "Awarded for innovative consulting methodologies and digital transformation approaches that have revolutionized service delivery.",
+      "icon": "TrendingUp"
+    },
+    {
+      "title": "Outstanding Service Delivery",
+      "year": "Ongoing Recognition",
+      "description": "Commended for consistent excellence in service delivery and commitment to exceeding client expectations across all engagements.",
+      "icon": "Star"
+    }
+  ],
+  "timeline": [
+    {
+      "year": "2010",
+      "title": "Founding & Early Years",
+      "description": "Kambel Consult was established with a vision to provide expert consulting services and empower businesses through strategic guidance and innovative solutions.",
+      "icon": "Briefcase"
+    },
+    {
+      "year": "2013",
+      "title": "Expansion & Growth",
+      "description": "Expanded our service offerings and established partnerships with leading organizations, delivering transformative results across various industries.",
+      "icon": "TrendingUp"
+    },
+    {
+      "year": "2016",
+      "title": "Masterclass Program Launch",
+      "description": "Launched our premier masterclass program, providing intensive training and development opportunities for professionals and business leaders.",
+      "icon": "GraduationCap"
+    },
+    {
+      "year": "2018",
+      "title": "Publication & Thought Leadership",
+      "description": "Published first book and established thought leadership through publications and research, sharing insights with a global audience.",
+      "icon": "BookOpen"
+    },
+    {
+      "year": "2020",
+      "title": "Digital Transformation",
+      "description": "Embarked on digital transformation journey, enhancing our service delivery through technology and innovative consulting methodologies.",
+      "icon": "Target"
+    },
+    {
+      "year": "2023",
+      "title": "Global Recognition",
+      "description": "Received industry awards and recognition for excellence in consulting, leadership development, and organizational transformation.",
+      "icon": "Award"
+    },
+    {
+      "year": "2025",
+      "title": "Future Vision",
+      "description": "Continuing to innovate and lead in consulting excellence, expanding our reach and impact on businesses worldwide.",
+      "icon": "CheckCircle"
+    }
+  ],
+  "values": [
+    {
+      "title": "Excellence",
+      "description": "We strive for excellence in everything we do, delivering outstanding results for our clients.",
+      "icon": "Target"
+    },
+    {
+      "title": "Collaboration",
+      "description": "Building strong partnerships and working closely with clients to achieve shared success.",
+      "icon": "Users"
+    },
+    {
+      "title": "Integrity",
+      "description": "Operating with the highest ethical standards and transparency in all our engagements.",
+      "icon": "Award"
+    },
+    {
+      "title": "Innovation",
+      "description": "Embracing new ideas and methodologies to provide cutting-edge solutions.",
+      "icon": "TrendingUp"
+    }
+  ],
+  "stats": [
+    {
+      "number": "500+",
+      "label": "Clients Served",
+      "icon": "Users"
+    },
+    {
+      "number": "1000+",
+      "label": "Masterclass Participants",
+      "icon": "GraduationCap"
+    },
+    {
+      "number": "50+",
+      "label": "Publications",
+      "icon": "BookOpen"
+    },
+    {
+      "number": "15+",
+      "label": "Years Experience",
+      "icon": "Calendar"
+    }
+  ]
+}
+

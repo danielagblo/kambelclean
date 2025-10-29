@@ -25,12 +25,53 @@ import {
 import PageTransition from '@/components/PageTransition';
 import FloatingMenu from '@/components/FloatingMenu';
 import NewsletterSubscription from '@/components/NewsletterSubscription';
+import { getIcon } from '@/lib/iconMap';
 
-interface TimelineEvent {
-  year: string;
-  title: string;
-  description: string;
-  icon: any;
+interface AboutConfig {
+  mission: {
+    title: string;
+    description: string;
+  };
+  ceo: {
+    name: string;
+    title: string;
+    rating: number;
+    leadership: string;
+    vision: string;
+    highlights: Array<{
+      icon: string;
+      title: string;
+      description: string;
+    }>;
+  };
+  education: Array<{
+    type: string;
+    icon: string;
+    description: string;
+    tags?: string[];
+  }>;
+  achievements: Array<{
+    title: string;
+    year: string;
+    description: string;
+    icon: string;
+  }>;
+  timeline: Array<{
+    year: string;
+    title: string;
+    description: string;
+    icon: string;
+  }>;
+  values: Array<{
+    title: string;
+    description: string;
+    icon: string;
+  }>;
+  stats: Array<{
+    number: string;
+    label: string;
+    icon: string;
+  }>;
 }
 
 export default function AboutPage() {
@@ -40,6 +81,8 @@ export default function AboutPage() {
     email: '',
     address: ''
   });
+  const [config, setConfig] = useState<AboutConfig | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchContactInfo = async () => {
@@ -54,96 +97,52 @@ export default function AboutPage() {
       }
     };
 
+    const fetchAboutConfig = async () => {
+      try {
+        const response = await fetch('/api/about');
+        if (response.ok) {
+          const data = await response.json();
+          setConfig(data.config);
+        }
+      } catch (error) {
+        console.error('Error loading about config:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchContactInfo();
+    fetchAboutConfig();
   }, []);
 
-  const timelineEvents: TimelineEvent[] = [
-    {
-      year: '2010',
-      title: 'Founding & Early Years',
-      description: 'Kambel Consult was established with a vision to provide expert consulting services and empower businesses through strategic guidance and innovative solutions.',
-      icon: Briefcase
-    },
-    {
-      year: '2013',
-      title: 'Expansion & Growth',
-      description: 'Expanded our service offerings and established partnerships with leading organizations, delivering transformative results across various industries.',
-      icon: TrendingUp
-    },
-    {
-      year: '2016',
-      title: 'Masterclass Program Launch',
-      description: 'Launched our premier masterclass program, providing intensive training and development opportunities for professionals and business leaders.',
-      icon: GraduationCap
-    },
-    {
-      year: '2018',
-      title: 'Publication & Thought Leadership',
-      description: 'Published first book and established thought leadership through publications and research, sharing insights with a global audience.',
-      icon: BookOpen
-    },
-    {
-      year: '2020',
-      title: 'Digital Transformation',
-      description: 'Embarked on digital transformation journey, enhancing our service delivery through technology and innovative consulting methodologies.',
-      icon: Target
-    },
-    {
-      year: '2023',
-      title: 'Global Recognition',
-      description: 'Received industry awards and recognition for excellence in consulting, leadership development, and organizational transformation.',
-      icon: Award
-    },
-    {
-      year: '2025',
-      title: 'Future Vision',
-      description: 'Continuing to innovate and lead in consulting excellence, expanding our reach and impact on businesses worldwide.',
-      icon: CheckCircle
-    }
-  ];
-
-  const values = [
-    {
-      icon: Target,
-      title: 'Excellence',
-      description: 'We strive for excellence in everything we do, delivering outstanding results for our clients.'
-    },
-    {
-      icon: Users,
-      title: 'Collaboration',
-      description: 'Building strong partnerships and working closely with clients to achieve shared success.'
-    },
-    {
-      icon: Award,
-      title: 'Integrity',
-      description: 'Operating with the highest ethical standards and transparency in all our engagements.'
-    },
-    {
-      icon: TrendingUp,
-      title: 'Innovation',
-      description: 'Embracing new ideas and methodologies to provide cutting-edge solutions.'
-    }
-  ];
-
-  const achievements = [
-    { number: '500+', label: 'Clients Served', icon: Users },
-    { number: '1000+', label: 'Masterclass Participants', icon: GraduationCap },
-    { number: '50+', label: 'Publications', icon: BookOpen },
-    { number: '15+', label: 'Years Experience', icon: Calendar }
-  ];
+  if (loading || !config) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      </div>
+    );
+  }
 
   return (
     <>
       <PageTransition>
       <div className="min-h-screen bg-white">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20 lg:py-32">
+        <section className="bg-gradient-to-br from-[#000080] via-[#000060] to-[#000080] text-white py-20 lg:py-32">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
+              <div className="mb-8 flex justify-center">
+                <img
+                  src="/klogo.jpeg"
+                  alt="Kambel Consult Logo"
+                  className="h-24 md:h-32 w-auto"
+                />
+              </div>
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                About Kambel Consult
+                <span className="text-white">About </span>
+                <span className="text-[#39B54A]">Kambel Consult</span>
               </h1>
-              <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl md:text-2xl text-white opacity-90 max-w-3xl mx-auto leading-relaxed">
                 Empowering businesses and professionals through expert consulting, strategic insights, and transformative learning experiences
               </p>
             </div>
@@ -154,21 +153,19 @@ export default function AboutPage() {
         <section className="py-16 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-20 h-20 bg-[#000080] rounded-full flex items-center justify-center mx-auto mb-6">
                 <Target className="w-10 h-10 text-white" />
               </div>
-              <h2 className="text-4xl font-bold text-slate-900 mb-6">Our Mission</h2>
+              <h2 className="text-4xl font-bold text-[#000080] mb-6">{config.mission.title}</h2>
               <p className="text-xl text-slate-600 leading-relaxed">
-                To empower businesses and individuals to achieve their fullest potential through expert consulting, 
-                strategic guidance, and transformative learning experiences. We are committed to delivering exceptional 
-                value and fostering sustainable growth for our clients.
+                {config.mission.description}
               </p>
             </div>
           </div>
         </section>
 
         {/* CEO Highlight Section */}
-        <section className="py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-blue-50">
+        <section className="py-20" style={{ background: 'linear-gradient(to bottom right, rgba(57, 181, 74, 0.1), rgba(255, 242, 0, 0.05), rgba(57, 181, 74, 0.1))' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
@@ -183,14 +180,14 @@ export default function AboutPage() {
               <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-200">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-0">
                   {/* CEO Image/Icon Section */}
-                  <div className="lg:col-span-1 bg-gradient-to-br from-blue-600 to-purple-600 p-8 lg:p-12 flex flex-col items-center justify-center text-white">
+                  <div className="lg:col-span-1 bg-gradient-to-br from-[#000080] to-[#39B54A] p-8 lg:p-12 flex flex-col items-center justify-center text-white">
                     <div className="w-32 h-32 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-6 backdrop-blur-sm border-4 border-white border-opacity-30">
                       <UserCircle className="w-20 h-20 text-white" />
                     </div>
-                    <h3 className="text-3xl font-bold mb-2">Sir Katamani</h3>
-                    <p className="text-xl text-blue-100 mb-4">Chief Executive Officer</p>
+                    <h3 className="text-3xl font-bold mb-2">{config.ceo.name}</h3>
+                    <p className="text-xl text-white opacity-90 mb-4">{config.ceo.title}</p>
                     <div className="flex gap-2">
-                      {[...Array(5)].map((_, i) => (
+                      {[...Array(config.ceo.rating)].map((_, i) => (
                         <Star key={i} className="w-5 h-5 fill-yellow-300 text-yellow-300" />
                       ))}
                     </div>
@@ -200,70 +197,40 @@ export default function AboutPage() {
                   <div className="lg:col-span-2 p-8 lg:p-12">
                     <div className="space-y-6">
                       <div>
-                        <h4 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-                          <Award className="w-6 h-6 text-blue-600" />
+                        <h4 className="text-2xl font-bold text-[#000080] mb-4 flex items-center gap-2">
+                          <Award className="w-6 h-6 text-[#39B54A]" />
                           Leadership Excellence
                         </h4>
                         <p className="text-slate-600 leading-relaxed">
-                          Sir Katamani brings decades of strategic leadership and visionary thinking to Kambel Consult. 
-                          With an unwavering commitment to excellence and innovation, he has guided the organization 
-                          to become a trusted partner for businesses seeking transformative growth.
+                          {config.ceo.leadership}
                         </p>
                       </div>
 
                       <div>
-                        <h4 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-                          <Lightbulb className="w-6 h-6 text-purple-600" />
+                        <h4 className="text-2xl font-bold text-[#000080] mb-4 flex items-center gap-2">
+                          <Lightbulb className="w-6 h-6 text-[#FFF200]" />
                           Vision & Expertise
                         </h4>
-                        <p className="text-slate-600 leading-relaxed mb-4">
-                          Under Sir Katamani's leadership, Kambel Consult has expanded its reach across multiple industries, 
-                          delivering groundbreaking consulting solutions and fostering a culture of continuous learning 
-                          through masterclass programs and thought leadership publications.
-                        </p>
-                        <p className="text-slate-600 leading-relaxed">
-                          His expertise spans business strategy, organizational development, and transformational leadership, 
-                          making him a sought-after advisor for C-suite executives and business leaders worldwide.
-                        </p>
+                        <div className="text-slate-600 leading-relaxed whitespace-pre-line">
+                          {config.ceo.vision}
+                        </div>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-gray-200">
-                        <div className="flex items-start gap-3">
-                          <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <Briefcase className="w-5 h-5 text-blue-600" />
-                          </div>
-                          <div>
-                            <h5 className="font-semibold text-slate-900 mb-1">Strategic Vision</h5>
-                            <p className="text-sm text-slate-600">Leading transformative business strategies</p>
-                          </div>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <GraduationCap className="w-5 h-5 text-purple-600" />
-                          </div>
-                          <div>
-                            <h5 className="font-semibold text-slate-900 mb-1">Thought Leadership</h5>
-                            <p className="text-sm text-slate-600">Author and industry expert</p>
-                          </div>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <Users className="w-5 h-5 text-green-600" />
-                          </div>
-                          <div>
-                            <h5 className="font-semibold text-slate-900 mb-1">Mentorship</h5>
-                            <p className="text-sm text-slate-600">Empowering next-generation leaders</p>
-                          </div>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <TrendingUp className="w-5 h-5 text-orange-600" />
-                          </div>
-                          <div>
-                            <h5 className="font-semibold text-slate-900 mb-1">Growth Catalyst</h5>
-                            <p className="text-sm text-slate-600">Driving organizational excellence</p>
-                          </div>
-                        </div>
+                        {config.ceo.highlights.map((highlight, index) => {
+                          const Icon = getIcon(highlight.icon);
+                          return (
+                            <div key={index} className="flex items-start gap-3">
+                              <div className="w-10 h-10 bg-[#39B54A] bg-opacity-10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <Icon className="w-5 h-5 text-[#39B54A]" />
+                              </div>
+                              <div>
+                                <h5 className="font-semibold text-slate-900 mb-1">{highlight.title}</h5>
+                                <p className="text-sm text-slate-600">{highlight.description}</p>
+                              </div>
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>
@@ -286,62 +253,53 @@ export default function AboutPage() {
             </div>
 
             <div className="max-w-4xl mx-auto space-y-6">
-              <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-8 border border-blue-100 hover:shadow-lg transition-all">
-                <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <School className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-slate-900 mb-2">Executive Education</h3>
-                    <p className="text-slate-700 leading-relaxed mb-3">
-                      Advanced leadership programs and executive education from leading institutions, 
-                      focusing on strategic management, organizational development, and transformative leadership.
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold">Strategic Leadership</span>
-                      <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold">Business Administration</span>
-                      <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">Organizational Psychology</span>
+              {config.education.map((edu, index) => {
+                const Icon = getIcon(edu.icon);
+                const bgStyles = [
+                  { background: 'linear-gradient(to right, rgba(57, 181, 74, 0.1), rgba(0, 0, 128, 0.1))' },
+                  { background: 'linear-gradient(to right, rgba(0, 0, 128, 0.1), rgba(57, 181, 74, 0.1))' },
+                  { background: 'linear-gradient(to right, rgba(255, 242, 0, 0.1), rgba(57, 181, 74, 0.1))' }
+                ];
+                const iconColors = [
+                  'bg-[#000080]',
+                  'bg-[#39B54A]',
+                  'bg-[#FFF200]'
+                ];
+                const borderColors = [
+                  'border-[#39B54A] border-opacity-20',
+                  'border-[#000080] border-opacity-20',
+                  'border-[#FFF200] border-opacity-30'
+                ];
+                return (
+                  <div
+                    key={index}
+                    style={bgStyles[index % bgStyles.length]}
+                    className={`rounded-xl p-8 border ${borderColors[index % borderColors.length]} hover:shadow-lg transition-all`}
+                  >
+                    <div className="flex items-start gap-6">
+                      <div className={`w-16 h-16 ${iconColors[index % iconColors.length]} rounded-lg flex items-center justify-center flex-shrink-0`}>
+                        <Icon className="w-8 h-8 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-2xl font-bold text-[#000080] mb-2">{edu.type}</h3>
+                        <p className="text-slate-700 leading-relaxed mb-3">{edu.description}</p>
+                        {edu.tags && edu.tags.length > 0 && (
+                          <div className="flex flex-wrap gap-2">
+                            {edu.tags.map((tag, tagIndex) => (
+                              <span
+                                key={tagIndex}
+                                className="px-3 py-1 bg-[#39B54A] bg-opacity-10 text-[#39B54A] rounded-full text-sm font-semibold"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl p-8 border border-purple-100 hover:shadow-lg transition-all">
-                <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 bg-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <GraduationCap className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-slate-900 mb-2">Professional Certifications</h3>
-                    <p className="text-slate-700 leading-relaxed mb-3">
-                      Certified in multiple professional disciplines including consulting methodologies, 
-                      change management, and executive coaching from internationally recognized bodies.
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold">Certified Consultant</span>
-                      <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold">Executive Coach</span>
-                      <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">Change Management</span>
-                      <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold">Strategic Planning</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-8 border border-green-100 hover:shadow-lg transition-all">
-                <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 bg-green-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <BookOpen className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-slate-900 mb-2">Continuing Education</h3>
-                    <p className="text-slate-700 leading-relaxed">
-                      Committed to lifelong learning through ongoing participation in workshops, seminars, 
-                      and advanced training programs to stay at the forefront of industry best practices 
-                      and emerging trends in business consulting and leadership development.
-                    </p>
-                  </div>
-                </div>
-              </div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -359,77 +317,30 @@ export default function AboutPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center mb-6">
-                  <Trophy className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Excellence in Consulting</h3>
-                <p className="text-slate-600 leading-relaxed mb-4">
-                  Recognized for outstanding achievement in providing strategic consulting services 
-                  and delivering measurable results for clients.
-                </p>
-                <div className="text-sm font-semibold text-blue-600">2023 Award Winner</div>
-              </div>
-
-              <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mb-6">
-                  <Medal className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Leadership Development Excellence</h3>
-                <p className="text-slate-600 leading-relaxed mb-4">
-                  Honored for innovative masterclass programs and contribution to developing 
-                  the next generation of business leaders.
-                </p>
-                <div className="text-sm font-semibold text-blue-600">2022 Industry Recognition</div>
-              </div>
-
-              <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg flex items-center justify-center mb-6">
-                  <Award className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Thought Leadership</h3>
-                <p className="text-slate-600 leading-relaxed mb-4">
-                  Acknowledged for influential publications and research contributions that have 
-                  shaped industry thinking and best practices.
-                </p>
-                <div className="text-sm font-semibold text-blue-600">2021 Publication Award</div>
-              </div>
-
-              <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center mb-6">
-                  <Users className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Client Excellence Award</h3>
-                <p className="text-slate-600 leading-relaxed mb-4">
-                  Recognized for exceptional client satisfaction and commitment to delivering 
-                  transformative business solutions.
-                </p>
-                <div className="text-sm font-semibold text-blue-600">Multiple Years</div>
-              </div>
-
-              <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center mb-6">
-                  <TrendingUp className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Business Innovation</h3>
-                <p className="text-slate-600 leading-relaxed mb-4">
-                  Awarded for innovative consulting methodologies and digital transformation 
-                  approaches that have revolutionized service delivery.
-                </p>
-                <div className="text-sm font-semibold text-blue-600">2020 Innovation Award</div>
-              </div>
-
-              <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-lg flex items-center justify-center mb-6">
-                  <Star className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Outstanding Service Delivery</h3>
-                <p className="text-slate-600 leading-relaxed mb-4">
-                  Commended for consistent excellence in service delivery and commitment 
-                  to exceeding client expectations across all engagements.
-                </p>
-                <div className="text-sm font-semibold text-blue-600">Ongoing Recognition</div>
-              </div>
+              {config.achievements.map((achievement, index) => {
+                const Icon = getIcon(achievement.icon);
+                const gradients = [
+                  'from-[#FFF200] to-[#39B54A]',
+                  'from-[#000080] to-[#39B54A]',
+                  'from-[#39B54A] to-[#2A8F39]',
+                  'from-[#000080] to-[#FFF200]',
+                  'from-[#39B54A] to-[#000080]',
+                  'from-[#FFF200] to-[#000080]'
+                ];
+                return (
+                  <div
+                    key={index}
+                    className="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
+                  >
+                    <div className={`w-16 h-16 bg-gradient-to-br ${gradients[index % gradients.length]} rounded-lg flex items-center justify-center mb-6`}>
+                      <Icon className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-[#000080] mb-3">{achievement.title}</h3>
+                    <p className="text-slate-600 leading-relaxed mb-4">{achievement.description}</p>
+                    <div className="text-sm font-semibold text-[#39B54A]">{achievement.year}</div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -448,12 +359,12 @@ export default function AboutPage() {
 
             <div className="relative">
               {/* Timeline Line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-500 via-purple-500 to-blue-500 hidden md:block"></div>
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-[#39B54A] via-[#000080] to-[#39B54A] hidden md:block"></div>
 
               {/* Timeline Events */}
               <div className="space-y-12 md:space-y-0">
-                {timelineEvents.map((event, index) => {
-                  const Icon = event.icon;
+                {config.timeline.map((event, index) => {
+                  const Icon = getIcon(event.icon);
                   const isLeft = index % 2 === 0;
                   
                   return (
@@ -467,12 +378,12 @@ export default function AboutPage() {
                       <div className={`w-full md:w-1/2 ${isLeft ? 'md:pr-8 md:text-right' : 'md:pl-8 md:text-left'} text-center md:text-left`}>
                         <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
                           <div className={`flex items-center gap-4 mb-4 ${isLeft ? 'md:flex-row-reverse md:justify-end' : ''}`}>
-                            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <div className="w-16 h-16 bg-gradient-to-br from-[#39B54A] to-[#000080] rounded-lg flex items-center justify-center flex-shrink-0">
                               <Icon className="w-8 h-8 text-white" />
                             </div>
                             <div>
-                              <div className="text-2xl font-bold text-blue-600 mb-1">{event.year}</div>
-                              <h3 className="text-xl font-bold text-slate-900">{event.title}</h3>
+                              <div className="text-2xl font-bold text-[#39B54A] mb-1">{event.year}</div>
+                              <h3 className="text-xl font-bold text-[#000080]">{event.title}</h3>
                             </div>
                           </div>
                           <p className="text-slate-600 leading-relaxed">{event.description}</p>
@@ -480,13 +391,13 @@ export default function AboutPage() {
                       </div>
 
                       {/* Timeline Dot */}
-                      <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-white border-4 border-blue-600 rounded-full flex items-center justify-center z-10 hidden md:flex">
-                        <div className="w-4 h-4 bg-blue-600 rounded-full"></div>
+                      <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-white border-4 border-[#39B54A] rounded-full flex items-center justify-center z-10 hidden md:flex">
+                        <div className="w-4 h-4 bg-[#39B54A] rounded-full"></div>
                       </div>
 
                       {/* Year on Mobile */}
                       <div className="w-full md:w-1/2 flex justify-center md:hidden mb-4">
-                        <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                        <div className="w-12 h-12 bg-[#39B54A] rounded-full flex items-center justify-center">
                           <div className="text-white font-bold text-sm">{event.year}</div>
                         </div>
                       </div>
@@ -511,17 +422,17 @@ export default function AboutPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {values.map((value, index) => {
-                const Icon = value.icon;
+              {config.values.map((value, index) => {
+                const Icon = getIcon(value.icon);
                 return (
                   <div
                     key={index}
-                    className="text-center p-6 rounded-xl bg-gray-50 hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 hover:border-blue-200"
+                    className="text-center p-6 rounded-xl bg-gray-50 hover:bg-[#39B54A] hover:bg-opacity-5 transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 hover:border-[#39B54A] hover:border-opacity-30"
                   >
-                    <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 bg-[#000080] rounded-full flex items-center justify-center mx-auto mb-4">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-3">{value.title}</h3>
+                    <h3 className="text-xl font-bold text-[#000080] mb-3">{value.title}</h3>
                     <p className="text-slate-600">{value.description}</p>
                   </div>
                 );
@@ -530,26 +441,26 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Achievements */}
-        <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+        {/* Achievements Stats */}
+        <section className="py-20 bg-gradient-to-r from-[#000080] to-[#39B54A] text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Achievements</h2>
-              <p className="text-xl text-blue-100 max-w-2xl mx-auto">
+              <p className="text-xl text-white opacity-90 max-w-2xl mx-auto">
                 Numbers that reflect our impact and commitment to excellence
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {achievements.map((achievement, index) => {
-                const Icon = achievement.icon;
+              {config.stats.map((stat, index) => {
+                const Icon = getIcon(stat.icon);
                 return (
                   <div key={index} className="text-center">
                     <div className="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
                       <Icon className="w-10 h-10 text-white" />
                     </div>
-                    <div className="text-5xl font-bold mb-2">{achievement.number}</div>
-                    <div className="text-xl text-blue-100">{achievement.label}</div>
+                    <div className="text-5xl font-bold mb-2">{stat.number}</div>
+                    <div className="text-xl text-white opacity-90">{stat.label}</div>
                   </div>
                 );
               })}
@@ -570,12 +481,12 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold text-center mb-12 text-slate-900">Get in Touch</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-[#000080] rounded-full flex items-center justify-center mx-auto mb-4">
                   <Phone className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold mb-2 text-slate-900">Phone</h3>
+                <h3 className="text-lg font-semibold mb-2 text-[#000080]">Phone</h3>
                 {contactInfo.phone ? (
-                  <a href={`tel:${contactInfo.phone}`} className="text-slate-600 hover:text-blue-600">
+                  <a href={`tel:${contactInfo.phone}`} className="text-slate-600 hover:text-[#39B54A]">
                     {contactInfo.phone}
                   </a>
                 ) : (
@@ -613,9 +524,16 @@ export default function AboutPage() {
         </section>
 
         {/* Footer */}
-        <footer className="bg-slate-900 text-white py-8">
+        <footer className="bg-[#000080] text-white py-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p className="text-sm text-slate-400">
+            <div className="mb-4">
+              <img
+                src="/klogo.jpeg"
+                alt="Kambel Consult Logo"
+                className="h-12 w-auto mx-auto"
+              />
+            </div>
+            <p className="text-sm text-white opacity-90">
               &copy; {new Date().getFullYear()} Kambel Consult. All rights reserved.
             </p>
           </div>
