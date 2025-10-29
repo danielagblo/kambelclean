@@ -2,79 +2,38 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { CheckCircle, Star, Users, TrendingUp, Smartphone, ArrowRight, Zap, Shield, Globe, Award, Target, Heart, Sparkles, Lock, BarChart, Globe2, Rocket, Briefcase, Circle as CircleIcon, Phone, Mail, MapPin } from 'lucide-react';
+import { 
+  Award, 
+  Briefcase, 
+  Target, 
+  Users, 
+  TrendingUp,
+  BookOpen,
+  GraduationCap,
+  Calendar,
+  CheckCircle,
+  MapPin,
+  Phone,
+  Mail
+} from 'lucide-react';
 import PageTransition from '@/components/PageTransition';
-import CountdownTimer from '@/components/CountdownTimer';
 import FloatingMenu from '@/components/FloatingMenu';
+import NewsletterSubscription from '@/components/NewsletterSubscription';
+
+interface TimelineEvent {
+  year: string;
+  title: string;
+  description: string;
+  icon: any;
+}
 
 export default function AboutPage() {
   const router = useRouter();
-  const [carouselImages, setCarouselImages] = useState<string[]>([]);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [launchDate, setLaunchDate] = useState<string>('2025-12-31T00:00:00');
-  const [stats, setStats] = useState({
-    usersWaiting: 0,
-    waitingAds: 0,
-    satisfaction: 96
-  });
   const [contactInfo, setContactInfo] = useState({
     phone: '',
     email: '',
     address: ''
   });
-
-  useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        // Add cache busting to force fresh data
-        const response = await fetch(`/api/gallery?t=${Date.now()}`, {
-          cache: 'no-store'
-        });
-        if (response.ok) {
-          const data = await response.json();
-          setCarouselImages(data.images.map((img: any) => img.url));
-        }
-      } catch (error) {
-        console.error('Error loading images:', error);
-      }
-    };
-    fetchImages();
-  }, []);
-
-  useEffect(() => {
-    const fetchLaunchDate = async () => {
-      try {
-        const response = await fetch('/api/settings/launch-date');
-        if (response.ok) {
-          const data = await response.json();
-          setLaunchDate(data.launchDate);
-        }
-      } catch (error) {
-        console.error('Error loading launch date:', error);
-      }
-    };
-    fetchLaunchDate();
-  }, []);
-
-  useEffect(() => {
-    const fetchStats = async () => {
-      try {
-        const response = await fetch('/api/business/register');
-        if (response.ok) {
-          const data = await response.json();
-          const userCount = data.registrations && data.registrations.length ? data.registrations.length : 0;
-          setStats({
-            usersWaiting: userCount,
-            waitingAds: userCount * 20,
-            satisfaction: 96
-          });
-        }
-      } catch (error) {
-        console.error('Error loading stats:', error);
-      }
-    };
-    fetchStats();
-  }, []);
 
   useEffect(() => {
     const fetchContactInfo = async () => {
@@ -88,351 +47,306 @@ export default function AboutPage() {
         console.error('Error loading contact info:', error);
       }
     };
+
     fetchContactInfo();
   }, []);
 
-  // Auto-advance carousel
-  useEffect(() => {
-    if (carouselImages.length > 0) {
-      const interval = setInterval(() => {
-        setCurrentSlide((prev) => (prev === carouselImages.length - 1 ? 0 : prev + 1));
-      }, 4000); // Change slide every 4 seconds
-
-      return () => clearInterval(interval);
-    }
-  }, [carouselImages.length]);
-
-  const features = [
+  const timelineEvents: TimelineEvent[] = [
     {
-      icon: <Smartphone className="h-8 w-8" />,
-      title: "Mobile-First Design",
-      description: "Optimized for mobile devices with intuitive navigation and smooth user experience.",
-      color: "from-blue-500 to-blue-600"
+      year: '2010',
+      title: 'Founding & Early Years',
+      description: 'Kambel Consult was established with a vision to provide expert consulting services and empower businesses through strategic guidance and innovative solutions.',
+      icon: Briefcase
     },
     {
-      icon: <TrendingUp className="h-8 w-8" />,
-      title: "Boost Your Sales",
-      description: "Increase your business visibility and sales with our powerful advertising platform.",
-      color: "from-green-500 to-green-600"
+      year: '2013',
+      title: 'Expansion & Growth',
+      description: 'Expanded our service offerings and established partnerships with leading organizations, delivering transformative results across various industries.',
+      icon: TrendingUp
     },
     {
-      icon: <Users className="h-8 w-8" />,
-      title: "Wide Reach",
-      description: "Connect with customers across multiple categories and expand your market reach.",
-      color: "from-purple-500 to-purple-600"
-    }
-  ];
-
-  const benefits = [
-    {
-      icon: <Zap className="h-6 w-6" />,
-      text: "Lightning-fast performance"
+      year: '2016',
+      title: 'Masterclass Program Launch',
+      description: 'Launched our premier masterclass program, providing intensive training and development opportunities for professionals and business leaders.',
+      icon: GraduationCap
     },
     {
-      icon: <Shield className="h-6 w-6" />,
-      text: "Secure and reliable platform"
+      year: '2018',
+      title: 'Publication & Thought Leadership',
+      description: 'Published first book and established thought leadership through publications and research, sharing insights with a global audience.',
+      icon: BookOpen
     },
     {
-      icon: <Globe className="h-6 w-6" />,
-      text: "Global reach and accessibility"
+      year: '2020',
+      title: 'Digital Transformation',
+      description: 'Embarked on digital transformation journey, enhancing our service delivery through technology and innovative consulting methodologies.',
+      icon: Target
     },
     {
-      icon: <Star className="h-6 w-6" />,
-      text: "Premium customer support"
+      year: '2023',
+      title: 'Global Recognition',
+      description: 'Received industry awards and recognition for excellence in consulting, leadership development, and organizational transformation.',
+      icon: Award
+    },
+    {
+      year: '2025',
+      title: 'Future Vision',
+      description: 'Continuing to innovate and lead in consulting excellence, expanding our reach and impact on businesses worldwide.',
+      icon: CheckCircle
     }
   ];
 
-  const statsItems = [
-    { number: "10x", label: "Growth Potential", icon: <TrendingUp className="h-6 w-6" /> },
-    { number: "50%", label: "Discount Available", icon: <Star className="h-6 w-6" /> },
-    { number: "6 Months", label: "Free Subscription", icon: <CheckCircle className="h-6 w-6" /> }
+  const values = [
+    {
+      icon: Target,
+      title: 'Excellence',
+      description: 'We strive for excellence in everything we do, delivering outstanding results for our clients.'
+    },
+    {
+      icon: Users,
+      title: 'Collaboration',
+      description: 'Building strong partnerships and working closely with clients to achieve shared success.'
+    },
+    {
+      icon: Award,
+      title: 'Integrity',
+      description: 'Operating with the highest ethical standards and transparency in all our engagements.'
+    },
+    {
+      icon: TrendingUp,
+      title: 'Innovation',
+      description: 'Embracing new ideas and methodologies to provide cutting-edge solutions.'
+    }
+  ];
+
+  const achievements = [
+    { number: '500+', label: 'Clients Served', icon: Users },
+    { number: '1000+', label: 'Masterclass Participants', icon: GraduationCap },
+    { number: '50+', label: 'Publications', icon: BookOpen },
+    { number: '15+', label: 'Years Experience', icon: Calendar }
   ];
 
   return (
     <>
       <PageTransition>
-      <div className="min-h-screen bg-white overflow-x-hidden md:overflow-x-visible">
-      {/* App Screenshots Carousel */}
-      {carouselImages.length > 0 && (
-        <section className="py-24 hidden md:block">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Horizontal Sliding Carousel */}
-            <div className="relative overflow-hidden">
-              {/* All images on one line with center image larger */}
-              <div className="overflow-hidden px-4">
-                <div className="flex gap-4 justify-center items-end">
-                  {carouselImages.map((imageUrl, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentSlide(index)}
-                      className={`flex-shrink-0 transition-all duration-500 ${
-                        index === currentSlide 
-                          ? 'opacity-100' 
-                          : 'opacity-70 hover:opacity-90'
-                      }`}
-                      style={{ flexShrink: 0 }}
-                    >
-                      <div className={`rounded-3xl overflow-hidden transition-all duration-1000 ${
-                        index === currentSlide 
-                          ? 'w-72 h-[450px] md:w-80 md:h-[550px]' 
-                          : 'w-24 h-40'
-                      }`}>
-                        <img 
-                          src={imageUrl} 
-                          alt={`App screenshot ${index + 1}`}
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-            
-            {/* Dots Indicator */}
-            <div className="flex justify-center mt-8 space-x-2">
-              {carouselImages.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                    index === currentSlide 
-                      ? 'bg-indigo-600 scale-125' 
-                      : 'bg-gray-300 hover:bg-gray-400'
-                  }`}
-                />
-              ))}
+      <div className="min-h-screen bg-white">
+        {/* Hero Section */}
+        <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20 lg:py-32">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center">
+              <h1 className="text-5xl md:text-6xl font-bold mb-6">
+                About Kambel Consult
+              </h1>
+              <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                Empowering businesses and professionals through expert consulting, strategic insights, and transformative learning experiences
+              </p>
             </div>
           </div>
         </section>
-      )}
 
-      {/* About Content Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: '#374957' }}>
-              About Oysloe
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Empowering businesses to connect, grow, and succeed in the digital marketplace
-            </p>
-          </div>
-
-          <div className="max-w-3xl mx-auto mb-20">
-            <div>
-              <h3 className="text-3xl font-bold mb-6" style={{ color: '#374957' }}>
-                Revolutionizing Business Growth
-              </h3>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Oysloe is more than just a platform – it's a comprehensive ecosystem designed to help businesses 
-                thrive in today's competitive market. We understand the challenges entrepreneurs face, and we've 
-                built solutions that make success accessible to everyone.
-              </p>
-              <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                From small startups to established enterprises, our platform provides the tools, visibility, 
-                and support needed to reach new customers and expand your market presence.
-              </p>
-              
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3 p-4 rounded-lg hover:bg-gray-50 transition-colors bg-white border-2 border-gray-200 hover:border-[#374957] hover:-translate-y-0.5 hover:shadow-md">
-                  <div className="w-12 h-12 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: '#374957' }}>
-                    <Smartphone className="w-6 h-6" style={{ color: 'white' }} />
-                  </div>
-                  <span className="text-gray-700 font-medium">User-friendly interface designed for all skill levels</span>
-                </div>
-                <div className="flex items-center space-x-3 p-4 rounded-lg hover:bg-gray-50 transition-colors bg-white border-2 border-gray-200 hover:border-[#374957] hover:-translate-y-0.5 hover:shadow-md">
-                  <div className="w-12 h-12 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: '#374957' }}>
-                    <BarChart className="w-6 h-6" style={{ color: 'white' }} />
-                  </div>
-                  <span className="text-gray-700 font-medium">Advanced analytics to track your success</span>
-                </div>
-                <div className="flex items-center space-x-3 p-4 rounded-lg hover:bg-gray-50 transition-colors bg-white border-2 border-gray-200 hover:border-[#374957] hover:-translate-y-0.5 hover:shadow-md">
-                  <div className="w-12 h-12 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: '#374957' }}>
-                    <Globe className="w-6 h-6" style={{ color: 'white' }} />
-                  </div>
-                  <span className="text-gray-700 font-medium">24/7 customer support when you need it</span>
-                </div>
-                <div className="flex items-center space-x-3 p-4 rounded-lg hover:bg-gray-50 transition-colors bg-white border-2 border-gray-200 hover:border-[#374957] hover:-translate-y-0.5 hover:shadow-md">
-                  <div className="w-12 h-12 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: '#374957' }}>
-                    <Rocket className="w-6 h-6" style={{ color: 'white' }} />
-                  </div>
-                  <span className="text-gray-700 font-medium">Scalable solutions that grow with your business</span>
-                </div>
+        {/* Mission Statement */}
+        <section className="py-16 bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Target className="w-10 h-10 text-white" />
               </div>
+              <h2 className="text-4xl font-bold text-slate-900 mb-6">Our Mission</h2>
+              <p className="text-xl text-slate-600 leading-relaxed">
+                To empower businesses and individuals to achieve their fullest potential through expert consulting, 
+                strategic guidance, and transformative learning experiences. We are committed to delivering exceptional 
+                value and fostering sustainable growth for our clients.
+              </p>
             </div>
           </div>
+        </section>
 
-          {/* Launch Countdown */}
-          <div className="text-center mb-16">
-            <h3 className="text-3xl font-bold mb-4" style={{ color: '#374957' }}>
-              Launching Soon
-            </h3>
-            <p className="text-lg text-gray-600 mb-8">
-              Countdown to our official launch
-            </p>
-            <CountdownTimer targetDate={launchDate} />
-          </div>
-
-          {/* Mission Statement */}
-          <div className="text-center bg-gray-50 rounded-3xl p-12 mb-16 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 opacity-5">
-              <Target className="w-full h-full" style={{ color: '#374957' }} />
+        {/* Professional Journey Timeline */}
+        <section className="py-20 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
+                Our Professional Journey
+              </h2>
+              <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+                A timeline of milestones and achievements that define our story
+              </p>
             </div>
+
             <div className="relative">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center" style={{ backgroundColor: '#374957' }}>
-                <Target className="w-10 h-10" style={{ color: 'white' }} />
+              {/* Timeline Line */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-500 via-purple-500 to-blue-500 hidden md:block"></div>
+
+              {/* Timeline Events */}
+              <div className="space-y-12 md:space-y-0">
+                {timelineEvents.map((event, index) => {
+                  const Icon = event.icon;
+                  const isLeft = index % 2 === 0;
+                  
+                  return (
+                    <div
+                      key={index}
+                      className={`relative flex items-center ${
+                        isLeft ? 'md:flex-row' : 'md:flex-row-reverse'
+                      } flex-col md:flex-row`}
+                    >
+                      {/* Content */}
+                      <div className={`w-full md:w-1/2 ${isLeft ? 'md:pr-8 md:text-right' : 'md:pl-8 md:text-left'} text-center md:text-left`}>
+                        <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                          <div className={`flex items-center gap-4 mb-4 ${isLeft ? 'md:flex-row-reverse md:justify-end' : ''}`}>
+                            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                              <Icon className="w-8 h-8 text-white" />
+                            </div>
+                            <div>
+                              <div className="text-2xl font-bold text-blue-600 mb-1">{event.year}</div>
+                              <h3 className="text-xl font-bold text-slate-900">{event.title}</h3>
+                            </div>
+                          </div>
+                          <p className="text-slate-600 leading-relaxed">{event.description}</p>
+                        </div>
+                      </div>
+
+                      {/* Timeline Dot */}
+                      <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-white border-4 border-blue-600 rounded-full flex items-center justify-center z-10 hidden md:flex">
+                        <div className="w-4 h-4 bg-blue-600 rounded-full"></div>
+                      </div>
+
+                      {/* Year on Mobile */}
+                      <div className="w-full md:w-1/2 flex justify-center md:hidden mb-4">
+                        <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                          <div className="text-white font-bold text-sm">{event.year}</div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-              <h3 className="text-3xl font-bold mb-6" style={{ color: '#374957' }}>
-                Our Mission
-              </h3>
-              <p className="text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto">
-                To democratize business success by providing accessible, powerful tools that enable every entrepreneur 
-                and business owner to reach their full potential, regardless of their background or resources.
-              </p>
             </div>
           </div>
+        </section>
 
-          {/* Values */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center group p-6 rounded-2xl bg-white border-2 border-gray-200 hover:border-[#374957] transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center transition-all" style={{ backgroundColor: '#374957', color: 'white', border: '2px solid #374957' }}>
-                <Users className="w-8 h-8" style={{ color: 'white' }} />
-              </div>
-              <h4 className="text-xl font-bold mb-3" style={{ color: '#374957' }}>Community First</h4>
-              <p className="text-gray-600">
-                We believe in the power of community and collaboration to drive innovation and success.
+        {/* Values Section */}
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
+                Our Core Values
+              </h2>
+              <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+                The principles that guide everything we do
               </p>
             </div>
-            
-            <div className="text-center group p-6 rounded-2xl bg-white border-2 border-gray-200 hover:border-[#374957] transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center transition-all" style={{ backgroundColor: '#374957', color: 'white', border: '2px solid #374957' }}>
-                <Zap className="w-8 h-8" style={{ color: 'white' }} />
-              </div>
-              <h4 className="text-xl font-bold mb-3" style={{ color: '#374957' }}>Innovation</h4>
-              <p className="text-gray-600">
-                Constantly evolving our platform with cutting-edge technology and user-centered design.
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {values.map((value, index) => {
+                const Icon = value.icon;
+                return (
+                  <div
+                    key={index}
+                    className="text-center p-6 rounded-xl bg-gray-50 hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 hover:border-blue-200"
+                  >
+                    <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Icon className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3">{value.title}</h3>
+                    <p className="text-slate-600">{value.description}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Achievements */}
+        <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Achievements</h2>
+              <p className="text-xl text-blue-100 max-w-2xl mx-auto">
+                Numbers that reflect our impact and commitment to excellence
               </p>
             </div>
-            
-            <div className="text-center group p-6 rounded-2xl bg-white border-2 border-gray-200 hover:border-[#374957] transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center transition-all" style={{ backgroundColor: '#374957', color: 'white', border: '2px solid #374957' }}>
-                <Shield className="w-8 h-8" style={{ color: 'white' }} />
-              </div>
-              <h4 className="text-xl font-bold mb-3" style={{ color: '#374957' }}>Trust & Security</h4>
-              <p className="text-gray-600">
-                Your data and business information are protected with enterprise-grade security measures.
-              </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {achievements.map((achievement, index) => {
+                const Icon = achievement.icon;
+                return (
+                  <div key={index} className="text-center">
+                    <div className="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
+                      <Icon className="w-10 h-10 text-white" />
+                    </div>
+                    <div className="text-5xl font-bold mb-2">{achievement.number}</div>
+                    <div className="text-xl text-blue-100">{achievement.label}</div>
+                  </div>
+                );
+              })}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-gradient-to-r from-[#374957] to-gray-700">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Users Waiting */}
-            <div className="text-center">
-              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-white flex items-center justify-center">
-                <Users className="w-10 h-10" style={{ color: '#374957' }} />
-              </div>
-              <div className="text-4xl font-bold text-white mb-2">{stats.usersWaiting}</div>
-              <div className="text-lg text-gray-200">Users Waiting</div>
-            </div>
+        {/* Newsletter */}
+        <section className="py-20 bg-gray-50">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <NewsletterSubscription />
+          </div>
+        </section>
 
-            {/* Waiting Ads */}
-            <div className="text-center">
-              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-white flex items-center justify-center">
-                <TrendingUp className="w-10 h-10" style={{ color: '#374957' }} />
+        {/* Contact Information */}
+        <section className="bg-white py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-center mb-12 text-slate-900">Get in Touch</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Phone className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2 text-slate-900">Phone</h3>
+                {contactInfo.phone ? (
+                  <a href={`tel:${contactInfo.phone}`} className="text-slate-600 hover:text-blue-600">
+                    {contactInfo.phone}
+                  </a>
+                ) : (
+                  <p className="text-slate-500">Not set</p>
+                )}
               </div>
-              <div className="text-4xl font-bold text-white mb-2">{stats.waitingAds}</div>
-              <div className="text-lg text-gray-200">Waiting Ads</div>
-            </div>
 
-            {/* Satisfaction */}
-            <div className="text-center">
-              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-white flex items-center justify-center">
-                <Star className="w-10 h-10" style={{ color: '#374957' }} />
+              <div className="text-center">
+                <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Mail className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2 text-slate-900">Email</h3>
+                {contactInfo.email ? (
+                  <a href={`mailto:${contactInfo.email}`} className="text-slate-600 hover:text-blue-600">
+                    {contactInfo.email}
+                  </a>
+                ) : (
+                  <p className="text-slate-500">Not set</p>
+                )}
               </div>
-              <div className="text-4xl font-bold text-white mb-2">{stats.satisfaction}%</div>
-              <div className="text-lg text-gray-200">Satisfaction</div>
+
+              <div className="text-center">
+                <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <MapPin className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2 text-slate-900">Address</h3>
+                {contactInfo.address ? (
+                  <p className="text-slate-600">{contactInfo.address}</p>
+                ) : (
+                  <p className="text-slate-500">Not set</p>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Contact Information Section */}
-      <section className="bg-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12" style={{ color: '#374957' }}>Contact Us</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Phone */}
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style={{ backgroundColor: '#F3F4F6' }}>
-                <Phone className="h-8 w-8" style={{ color: '#374957' }} />
-              </div>
-              <h3 className="text-lg font-semibold mb-2" style={{ color: '#374957' }}>Phone</h3>
-              {contactInfo.phone ? (
-                <a href={`tel:${contactInfo.phone}`} className="text-sm hover:underline" style={{ color: '#374957' }}>
-                  {contactInfo.phone}
-                </a>
-              ) : (
-                <p className="text-sm text-gray-500">Not set</p>
-              )}
-            </div>
-
-            {/* Email */}
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style={{ backgroundColor: '#F3F4F6' }}>
-                <Mail className="h-8 w-8" style={{ color: '#374957' }} />
-              </div>
-              <h3 className="text-lg font-semibold mb-2" style={{ color: '#374957' }}>Email</h3>
-              {contactInfo.email ? (
-                <a href={`mailto:${contactInfo.email}`} className="text-sm hover:underline" style={{ color: '#374957' }}>
-                  {contactInfo.email}
-                </a>
-              ) : (
-                <p className="text-sm text-gray-500">Not set</p>
-              )}
-            </div>
-
-            {/* Address */}
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center" style={{ backgroundColor: '#F3F4F6' }}>
-                <MapPin className="h-8 w-8" style={{ color: '#374957' }} />
-              </div>
-              <h3 className="text-lg font-semibold mb-2" style={{ color: '#374957' }}>Address</h3>
-              {contactInfo.address ? (
-                <p className="text-sm" style={{ color: '#374957' }}>
-                  {contactInfo.address}
-                </p>
-              ) : (
-                <p className="text-sm text-gray-500">Not set</p>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-50 mt-2 py-8 pb-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <p className="text-sm text-[#374957]">
-              Designed & Owned by{' '}
-              <a
-                href="https://bricsky.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold hover:underline"
-              >
-                Bricsky Softwares
-              </a>
+        {/* Footer */}
+        <footer className="bg-slate-900 text-white py-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p className="text-sm text-slate-400">
+              &copy; {new Date().getFullYear()} Kambel Consult. All rights reserved.
             </p>
           </div>
-        </div>
-      </footer>
+        </footer>
       </div>
       </PageTransition>
 

@@ -5,16 +5,18 @@ import { useRouter } from 'next/navigation';
 import { 
   BarChart3, 
   Users, 
-  Package, 
   Settings, 
   LogOut, 
   Menu, 
   X,
-  TrendingUp,
-  DollarSign,
-  ShoppingCart,
+  BookOpen,
+  FileText,
+  GraduationCap,
+  Mail,
   UserPlus,
-  Image
+  Image,
+  Briefcase,
+  MessageSquare
 } from 'lucide-react';
 
 interface User {
@@ -30,16 +32,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const router = useRouter();
 
   useEffect(() => {
-    // Simple cookie check
     const isAuthenticated = document.cookie.includes('authenticated=true');
     
     if (!isAuthenticated) {
       router.push('/login');
     } else {
-      // Set dummy user for display
       setUser({
         id: 1,
-        email: 'admin@bestland.com',
+        email: 'admin@kambelconsult.com',
         name: 'Admin User',
         role: 'admin'
       });
@@ -47,7 +47,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   }, [router]);
 
   const handleLogout = () => {
-    // Clear cookie
     document.cookie = 'authenticated=; path=/; max-age=0';
     router.push('/login');
   };
@@ -55,20 +54,21 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const navigation = [
     { name: 'Dashboard', href: '/admin/dashboard', icon: BarChart3 },
     { name: 'Analytics', href: '/admin/analytics', icon: BarChart3 },
-    { name: 'Business', href: '/admin/business', icon: Users },
-    { name: 'Pricing', href: '/admin/pricing', icon: DollarSign },
-    { name: 'Users', href: '/admin/users', icon: Users },
-    { name: 'Products', href: '/admin/products', icon: Package },
-    { name: 'Screenshots', href: '/admin/gallery', icon: BarChart3 },
-    { name: 'Favicon', href: '/admin/favicon', icon: Image },
+    { name: 'Consultancy Services', href: '/admin/services', icon: Briefcase },
+    { name: 'Publications', href: '/admin/publications', icon: BookOpen },
+    { name: 'Blog Posts', href: '/admin/blog', icon: FileText },
+    { name: 'Masterclasses', href: '/admin/masterclasses', icon: GraduationCap },
+    { name: 'Contact Messages', href: '/admin/messages', icon: MessageSquare },
+    { name: 'Newsletter', href: '/admin/newsletter', icon: Mail },
+    { name: 'Gallery', href: '/admin/gallery', icon: Image },
     { name: 'Settings', href: '/admin/settings', icon: Settings },
   ];
 
   const stats = [
-    { name: 'Total Revenue', value: '$45,231', change: '+20.1%', changeType: 'positive', icon: DollarSign },
-    { name: 'New Users', value: '2,350', change: '+15.3%', changeType: 'positive', icon: UserPlus },
-    { name: 'Orders', value: '1,234', change: '+5.4%', changeType: 'positive', icon: ShoppingCart },
-    { name: 'Growth', value: '12.5%', change: '+2.1%', changeType: 'positive', icon: TrendingUp },
+    { name: 'Total Services', value: '0', change: '', changeType: 'positive', icon: Briefcase },
+    { name: 'Publications', value: '0', change: '', changeType: 'positive', icon: BookOpen },
+    { name: 'Blog Posts', value: '0', change: '', changeType: 'positive', icon: FileText },
+    { name: 'Masterclasses', value: '0', change: '', changeType: 'positive', icon: GraduationCap },
   ];
 
   if (!user) {
@@ -96,7 +96,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </div>
           <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
             <div className="flex-shrink-0 flex items-center px-4">
-              <h1 className="text-xl font-bold text-gray-900">BestLand Admin</h1>
+              <h1 className="text-xl font-bold text-gray-900">Kambel Consult Admin</h1>
             </div>
             <nav className="mt-5 px-2 space-y-1">
               {navigation.map((item) => {
@@ -130,7 +130,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div className="flex-1 flex flex-col min-h-0 bg-white border-r border-gray-200">
           <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
             <div className="flex items-center flex-shrink-0 px-4">
-              <h1 className="text-xl font-bold text-gray-900">BestLand Admin</h1>
+              <h1 className="text-xl font-bold text-gray-900">Kambel Consult Admin</h1>
             </div>
             <nav className="mt-5 flex-1 px-2 space-y-1">
               {navigation.map((item) => {
@@ -180,64 +180,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <main className="flex-1">
           <div className="py-6">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              {/* Page header */}
-              <div className="md:flex md:items-center md:justify-between">
-                <div className="flex-1 min-w-0">
-                  <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
-                    Welcome back, {user.name}!
-                  </h2>
-                </div>
-                <div className="mt-4 flex md:mt-0 md:ml-4">
-                  <button
-                    type="button"
-                    className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  >
-                    Export
-                  </button>
-                </div>
-              </div>
-
-              {/* Stats */}
-              <div className="mt-8">
-                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                  {stats.map((stat) => {
-                    const Icon = stat.icon;
-                    return (
-                      <div key={stat.name} className="bg-white overflow-hidden shadow rounded-lg">
-                        <div className="p-5">
-                          <div className="flex items-center">
-                            <div className="flex-shrink-0">
-                              <Icon className="h-6 w-6 text-gray-400" />
-                            </div>
-                            <div className="ml-5 w-0 flex-1">
-                              <dl>
-                                <dt className="text-sm font-medium text-gray-500 truncate">
-                                  {stat.name}
-                                </dt>
-                                <dd className="flex items-baseline">
-                                  <div className="text-2xl font-semibold text-gray-900">
-                                    {stat.value}
-                                  </div>
-                                  <div className={`ml-2 flex items-baseline text-sm font-semibold ${
-                                    stat.changeType === 'positive' ? 'text-green-600' : 'text-red-600'
-                                  }`}>
-                                    {stat.change}
-                                  </div>
-                                </dd>
-                              </dl>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Main content area */}
-              <div className="mt-8">
-                {children}
-              </div>
+              {children}
             </div>
           </div>
         </main>

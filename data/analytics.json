@@ -533,8 +533,14 @@
       "timestamp": "2025-10-28T08:56:09.668Z",
       "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
       "referrer": "http://localhost:3000/about"
+    },
+    {
+      "page": "/",
+      "timestamp": "2025-10-28T11:44:56.505Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "Direct"
     }
   ],
   "registrations": [],
-  "lastUpdated": "2025-10-28T08:56:09.668Z"
+  "lastUpdated": "2025-10-28T11:44:56.505Z"
 }
