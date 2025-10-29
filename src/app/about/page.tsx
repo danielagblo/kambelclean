@@ -17,7 +17,10 @@ import {
   Mail,
   UserCircle,
   Star,
-  Lightbulb
+  Lightbulb,
+  Trophy,
+  School,
+  Medal
 } from 'lucide-react';
 import PageTransition from '@/components/PageTransition';
 import FloatingMenu from '@/components/FloatingMenu';
@@ -265,6 +268,167 @@ export default function AboutPage() {
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Education Section */}
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
+                Education & Qualifications
+              </h2>
+              <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+                Academic excellence and continuous learning foundation
+              </p>
+            </div>
+
+            <div className="max-w-4xl mx-auto space-y-6">
+              <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-8 border border-blue-100 hover:shadow-lg transition-all">
+                <div className="flex items-start gap-6">
+                  <div className="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <School className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-2">Executive Education</h3>
+                    <p className="text-slate-700 leading-relaxed mb-3">
+                      Advanced leadership programs and executive education from leading institutions, 
+                      focusing on strategic management, organizational development, and transformative leadership.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold">Strategic Leadership</span>
+                      <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold">Business Administration</span>
+                      <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">Organizational Psychology</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl p-8 border border-purple-100 hover:shadow-lg transition-all">
+                <div className="flex items-start gap-6">
+                  <div className="w-16 h-16 bg-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <GraduationCap className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-2">Professional Certifications</h3>
+                    <p className="text-slate-700 leading-relaxed mb-3">
+                      Certified in multiple professional disciplines including consulting methodologies, 
+                      change management, and executive coaching from internationally recognized bodies.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold">Certified Consultant</span>
+                      <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold">Executive Coach</span>
+                      <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">Change Management</span>
+                      <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold">Strategic Planning</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-8 border border-green-100 hover:shadow-lg transition-all">
+                <div className="flex items-start gap-6">
+                  <div className="w-16 h-16 bg-green-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <BookOpen className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-2">Continuing Education</h3>
+                    <p className="text-slate-700 leading-relaxed">
+                      Committed to lifelong learning through ongoing participation in workshops, seminars, 
+                      and advanced training programs to stay at the forefront of industry best practices 
+                      and emerging trends in business consulting and leadership development.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Achievements Section */}
+        <section className="py-20 bg-gradient-to-br from-slate-50 to-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
+                Awards & Recognitions
+              </h2>
+              <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+                Celebrating excellence and industry recognition
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center mb-6">
+                  <Trophy className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Excellence in Consulting</h3>
+                <p className="text-slate-600 leading-relaxed mb-4">
+                  Recognized for outstanding achievement in providing strategic consulting services 
+                  and delivering measurable results for clients.
+                </p>
+                <div className="text-sm font-semibold text-blue-600">2023 Award Winner</div>
+              </div>
+
+              <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mb-6">
+                  <Medal className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Leadership Development Excellence</h3>
+                <p className="text-slate-600 leading-relaxed mb-4">
+                  Honored for innovative masterclass programs and contribution to developing 
+                  the next generation of business leaders.
+                </p>
+                <div className="text-sm font-semibold text-blue-600">2022 Industry Recognition</div>
+              </div>
+
+              <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg flex items-center justify-center mb-6">
+                  <Award className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Thought Leadership</h3>
+                <p className="text-slate-600 leading-relaxed mb-4">
+                  Acknowledged for influential publications and research contributions that have 
+                  shaped industry thinking and best practices.
+                </p>
+                <div className="text-sm font-semibold text-blue-600">2021 Publication Award</div>
+              </div>
+
+              <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center mb-6">
+                  <Users className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Client Excellence Award</h3>
+                <p className="text-slate-600 leading-relaxed mb-4">
+                  Recognized for exceptional client satisfaction and commitment to delivering 
+                  transformative business solutions.
+                </p>
+                <div className="text-sm font-semibold text-blue-600">Multiple Years</div>
+              </div>
+
+              <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center mb-6">
+                  <TrendingUp className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Business Innovation</h3>
+                <p className="text-slate-600 leading-relaxed mb-4">
+                  Awarded for innovative consulting methodologies and digital transformation 
+                  approaches that have revolutionized service delivery.
+                </p>
+                <div className="text-sm font-semibold text-blue-600">2020 Innovation Award</div>
+              </div>
+
+              <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-lg flex items-center justify-center mb-6">
+                  <Star className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Outstanding Service Delivery</h3>
+                <p className="text-slate-600 leading-relaxed mb-4">
+                  Commended for consistent excellence in service delivery and commitment 
+                  to exceeding client expectations across all engagements.
+                </p>
+                <div className="text-sm font-semibold text-blue-600">Ongoing Recognition</div>
               </div>
             </div>
           </div>
