@@ -87,7 +87,7 @@ export default function LandingPage() {
       <PageTransition>
       <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[#000080] via-[#000060] to-[#000080] text-white py-20 lg:py-32">
+      <section className="bg-gradient-to-br from-[#1565C0] via-[#0D47A1] to-[#1565C0] text-white py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="mb-8 flex justify-center">
@@ -101,7 +101,7 @@ export default function LandingPage() {
               <span className="text-white">
                 KAMBEL
               </span>
-              <span className="text-[#39B54A] ml-2">
+              <span className="text-[#4CAF50] ml-2">
                 CONSULT
               </span>
             </h1>
@@ -111,14 +111,14 @@ export default function LandingPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={() => router.push('/#services')}
-                className="bg-[#39B54A] hover:bg-[#2A8F39] text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg"
+                className="bg-[#4CAF50] hover:bg-[#2E7D32] text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg"
               >
                 Our Services
                 <ArrowRight className="h-5 w-5" />
               </button>
               <button
                 onClick={() => router.push('/masterclasses')}
-                className="bg-[#FFF200] hover:bg-[#E6D900] text-[#000080] px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 shadow-lg"
+                className="bg-[#FFD700] hover:bg-[#F9A825] text-[#1565C0] px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 shadow-lg"
               >
                 View Masterclasses
               </button>
@@ -146,14 +146,14 @@ export default function LandingPage() {
                   key={service.id}
                   className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
                 >
-                  <div className="w-16 h-16 bg-gradient-to-br from-[#39B54A] to-[#2A8F39] rounded-lg flex items-center justify-center mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-[#4CAF50] to-[#2E7D32] rounded-lg flex items-center justify-center mb-6">
                     <Briefcase className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-[#000080] mb-4">{service.title}</h3>
+                  <h3 className="text-2xl font-bold text-[#1565C0] mb-4">{service.title}</h3>
                   <p className="text-slate-600 leading-relaxed mb-6">{service.description}</p>
                   <button
                     onClick={() => router.push('/contact')}
-                    className="text-[#39B54A] font-semibold flex items-center gap-2 hover:text-[#2A8F39] transition-colors"
+                    className="text-[#4CAF50] font-semibold flex items-center gap-2 hover:text-[#2E7D32] transition-colors"
                   >
                     Learn More
                     <ArrowRight className="h-4 w-4" />
@@ -168,14 +168,14 @@ export default function LandingPage() {
                   key={service.id}
                   className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
                 >
-                  <div className="w-16 h-16 bg-gradient-to-br from-[#39B54A] to-[#2A8F39] rounded-lg flex items-center justify-center mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-[#4CAF50] to-[#2E7D32] rounded-lg flex items-center justify-center mb-6">
                     <Briefcase className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-[#000080] mb-4">{service.title}</h3>
+                  <h3 className="text-2xl font-bold text-[#1565C0] mb-4">{service.title}</h3>
                   <p className="text-slate-600 leading-relaxed mb-6">{service.description}</p>
                   <button
                     onClick={() => router.push('/contact')}
-                    className="text-[#39B54A] font-semibold flex items-center gap-2 hover:text-[#2A8F39] transition-colors"
+                    className="text-[#4CAF50] font-semibold flex items-center gap-2 hover:text-[#2E7D32] transition-colors"
                   >
                     Learn More
                     <ArrowRight className="h-4 w-4" />
@@ -198,14 +198,14 @@ export default function LandingPage() {
                   key={index}
                   className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
                 >
-                  <div className="w-16 h-16 bg-gradient-to-br from-[#39B54A] to-[#2A8F39] rounded-lg flex items-center justify-center mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-[#4CAF50] to-[#2E7D32] rounded-lg flex items-center justify-center mb-6">
                     <Briefcase className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-[#000080] mb-4">{service.title}</h3>
+                  <h3 className="text-2xl font-bold text-[#1565C0] mb-4">{service.title}</h3>
                   <p className="text-slate-600 leading-relaxed mb-6">{service.description}</p>
                   <button
                     onClick={() => router.push('/contact')}
-                    className="text-[#39B54A] font-semibold flex items-center gap-2 hover:text-[#2A8F39] transition-colors"
+                    className="text-[#4CAF50] font-semibold flex items-center gap-2 hover:text-[#2E7D32] transition-colors"
                   >
                     Learn More
                     <ArrowRight className="h-4 w-4" />
@@ -233,31 +233,31 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="w-20 h-20 bg-[#39B54A] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="h-10 w-10 text-[#39B54A]" />
+              <div className="w-20 h-20 bg-[#4CAF50] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="h-10 w-10 text-[#4CAF50]" />
               </div>
-              <h3 className="text-xl font-bold text-[#000080] mb-2">Expert Team</h3>
+              <h3 className="text-xl font-bold text-[#1565C0] mb-2">Expert Team</h3>
               <p className="text-slate-600">Experienced consultants with proven track records</p>
             </div>
             <div className="text-center">
-              <div className="w-20 h-20 bg-[#000080] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Target className="h-10 w-10 text-[#000080]" />
+              <div className="w-20 h-20 bg-[#1565C0] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Target className="h-10 w-10 text-[#1565C0]" />
               </div>
-              <h3 className="text-xl font-bold text-[#000080] mb-2">Tailored Solutions</h3>
+              <h3 className="text-xl font-bold text-[#1565C0] mb-2">Tailored Solutions</h3>
               <p className="text-slate-600">Customized strategies for your unique needs</p>
             </div>
             <div className="text-center">
-              <div className="w-20 h-20 bg-[#FFF200] bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <TrendingUp className="h-10 w-10 text-[#FFF200]" />
+              <div className="w-20 h-20 bg-[#FFD700] bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <TrendingUp className="h-10 w-10 text-[#FFD700]" />
               </div>
-              <h3 className="text-xl font-bold text-[#000080] mb-2">Proven Results</h3>
+              <h3 className="text-xl font-bold text-[#1565C0] mb-2">Proven Results</h3>
               <p className="text-slate-600">Measurable outcomes and business growth</p>
             </div>
             <div className="text-center">
-              <div className="w-20 h-20 bg-[#39B54A] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="h-10 w-10 text-[#39B54A]" />
+              <div className="w-20 h-20 bg-[#4CAF50] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Award className="h-10 w-10 text-[#4CAF50]" />
               </div>
-              <h3 className="text-xl font-bold text-[#000080] mb-2">Industry Expertise</h3>
+              <h3 className="text-xl font-bold text-[#1565C0] mb-2">Industry Expertise</h3>
               <p className="text-slate-600">Deep knowledge across multiple sectors</p>
             </div>
           </div>
@@ -265,7 +265,7 @@ export default function LandingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-[#39B54A] to-[#2A8F39] text-white">
+      <section className="py-20 bg-gradient-to-r from-[#4CAF50] to-[#2E7D32] text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Ready to Transform Your Business?
@@ -275,7 +275,7 @@ export default function LandingPage() {
           </p>
           <button
             onClick={() => router.push('/contact')}
-            className="bg-white text-[#000080] px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#FFF200] transition-all transform hover:scale-105 shadow-lg"
+            className="bg-white text-[#1565C0] px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#FFD700] transition-all transform hover:scale-105 shadow-lg"
           >
             Contact Us Now
           </button>
@@ -294,12 +294,12 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="w-16 h-16 bg-[#000080] rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-[#1565C0] rounded-full flex items-center justify-center mx-auto mb-4">
                 <Phone className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 text-[#000080]">Phone</h3>
+              <h3 className="text-lg font-semibold mb-2 text-[#1565C0]">Phone</h3>
               {contactInfo.phone ? (
-                <a href={`tel:${contactInfo.phone}`} className="text-slate-600 hover:text-[#39B54A]">
+                <a href={`tel:${contactInfo.phone}`} className="text-slate-600 hover:text-[#4CAF50]">
                   {contactInfo.phone}
                 </a>
               ) : (
@@ -307,12 +307,12 @@ export default function LandingPage() {
               )}
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-[#39B54A] rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-[#4CAF50] rounded-full flex items-center justify-center mx-auto mb-4">
                 <Mail className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 text-[#000080]">Email</h3>
+              <h3 className="text-lg font-semibold mb-2 text-[#1565C0]">Email</h3>
               {contactInfo.email ? (
-                <a href={`mailto:${contactInfo.email}`} className="text-slate-600 hover:text-[#39B54A]">
+                <a href={`mailto:${contactInfo.email}`} className="text-slate-600 hover:text-[#4CAF50]">
                   {contactInfo.email}
                 </a>
               ) : (
@@ -320,10 +320,10 @@ export default function LandingPage() {
               )}
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-[#000080] rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-[#1565C0] rounded-full flex items-center justify-center mx-auto mb-4">
                 <MapPin className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-lg font-semibold mb-2 text-[#000080]">Address</h3>
+              <h3 className="text-lg font-semibold mb-2 text-[#1565C0]">Address</h3>
               {contactInfo.address ? (
                 <p className="text-slate-600">{contactInfo.address}</p>
               ) : (
@@ -335,7 +335,7 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#000080] text-white py-8">
+      <footer className="bg-[#1565C0] text-white py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="mb-4">
             <img

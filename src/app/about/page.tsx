@@ -128,7 +128,7 @@ export default function AboutPage() {
       <PageTransition>
       <div className="min-h-screen bg-white">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-[#000080] via-[#000060] to-[#000080] text-white py-20 lg:py-32">
+        <section className="bg-gradient-to-br from-[#1565C0] via-[#0D47A1] to-[#1565C0] text-white py-20 lg:py-32">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <div className="mb-8 flex justify-center">
@@ -140,7 +140,7 @@ export default function AboutPage() {
               </div>
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
                 <span className="text-white">About </span>
-                <span className="text-[#39B54A]">Kambel Consult</span>
+                <span className="text-[#4CAF50]">Kambel Consult</span>
               </h1>
               <p className="text-xl md:text-2xl text-white opacity-90 max-w-3xl mx-auto leading-relaxed">
                 Empowering businesses and professionals through expert consulting, strategic insights, and transformative learning experiences
@@ -153,10 +153,10 @@ export default function AboutPage() {
         <section className="py-16 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <div className="w-20 h-20 bg-[#000080] rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-20 h-20 bg-[#1565C0] rounded-full flex items-center justify-center mx-auto mb-6">
                 <Target className="w-10 h-10 text-white" />
               </div>
-              <h2 className="text-4xl font-bold text-[#000080] mb-6">{config.mission.title}</h2>
+              <h2 className="text-4xl font-bold text-[#1565C0] mb-6">{config.mission.title}</h2>
               <p className="text-xl text-slate-600 leading-relaxed">
                 {config.mission.description}
               </p>
@@ -165,7 +165,7 @@ export default function AboutPage() {
         </section>
 
         {/* CEO Highlight Section */}
-        <section className="py-20" style={{ background: 'linear-gradient(to bottom right, rgba(57, 181, 74, 0.1), rgba(255, 242, 0, 0.05), rgba(57, 181, 74, 0.1))' }}>
+        <section className="py-20" style={{ background: 'linear-gradient(to bottom right, rgba(76, 175, 80, 0.1), rgba(255, 215, 0, 0.05), rgba(76, 175, 80, 0.1))' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
@@ -180,7 +180,7 @@ export default function AboutPage() {
               <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-200">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-0">
                   {/* CEO Image/Icon Section */}
-                  <div className="lg:col-span-1 bg-gradient-to-br from-[#000080] to-[#39B54A] p-8 lg:p-12 flex flex-col items-center justify-center text-white">
+                  <div className="lg:col-span-1 bg-gradient-to-br from-[#1565C0] to-[#4CAF50] p-8 lg:p-12 flex flex-col items-center justify-center text-white">
                     <div className="w-32 h-32 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-6 backdrop-blur-sm border-4 border-white border-opacity-30">
                       <UserCircle className="w-20 h-20 text-white" />
                     </div>
@@ -197,8 +197,8 @@ export default function AboutPage() {
                   <div className="lg:col-span-2 p-8 lg:p-12">
                     <div className="space-y-6">
                       <div>
-                        <h4 className="text-2xl font-bold text-[#000080] mb-4 flex items-center gap-2">
-                          <Award className="w-6 h-6 text-[#39B54A]" />
+                        <h4 className="text-2xl font-bold text-[#1565C0] mb-4 flex items-center gap-2">
+                          <Award className="w-6 h-6 text-[#4CAF50]" />
                           Leadership Excellence
                         </h4>
                         <p className="text-slate-600 leading-relaxed">
@@ -207,8 +207,8 @@ export default function AboutPage() {
                       </div>
 
                       <div>
-                        <h4 className="text-2xl font-bold text-[#000080] mb-4 flex items-center gap-2">
-                          <Lightbulb className="w-6 h-6 text-[#FFF200]" />
+                        <h4 className="text-2xl font-bold text-[#1565C0] mb-4 flex items-center gap-2">
+                          <Lightbulb className="w-6 h-6 text-[#FFD700]" />
                           Vision & Expertise
                         </h4>
                         <div className="text-slate-600 leading-relaxed whitespace-pre-line">
@@ -221,8 +221,8 @@ export default function AboutPage() {
                           const Icon = getIcon(highlight.icon);
                           return (
                             <div key={index} className="flex items-start gap-3">
-                              <div className="w-10 h-10 bg-[#39B54A] bg-opacity-10 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <Icon className="w-5 h-5 text-[#39B54A]" />
+                              <div className="w-10 h-10 bg-[#4CAF50] bg-opacity-10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <Icon className="w-5 h-5 text-[#4CAF50]" />
                               </div>
                               <div>
                                 <h5 className="font-semibold text-slate-900 mb-1">{highlight.title}</h5>
@@ -256,19 +256,19 @@ export default function AboutPage() {
               {config.education.map((edu, index) => {
                 const Icon = getIcon(edu.icon);
                 const bgStyles = [
-                  { background: 'linear-gradient(to right, rgba(57, 181, 74, 0.1), rgba(0, 0, 128, 0.1))' },
-                  { background: 'linear-gradient(to right, rgba(0, 0, 128, 0.1), rgba(57, 181, 74, 0.1))' },
-                  { background: 'linear-gradient(to right, rgba(255, 242, 0, 0.1), rgba(57, 181, 74, 0.1))' }
+                  { background: 'linear-gradient(to right, rgba(76, 175, 80, 0.1), rgba(21, 101, 192, 0.1))' },
+                  { background: 'linear-gradient(to right, rgba(21, 101, 192, 0.1), rgba(76, 175, 80, 0.1))' },
+                  { background: 'linear-gradient(to right, rgba(255, 215, 0, 0.1), rgba(76, 175, 80, 0.1))' }
                 ];
                 const iconColors = [
-                  'bg-[#000080]',
-                  'bg-[#39B54A]',
-                  'bg-[#FFF200]'
+                  'bg-[#1565C0]',
+                  'bg-[#4CAF50]',
+                  'bg-[#FFD700]'
                 ];
                 const borderColors = [
-                  'border-[#39B54A] border-opacity-20',
-                  'border-[#000080] border-opacity-20',
-                  'border-[#FFF200] border-opacity-30'
+                  'border-[#4CAF50] border-opacity-20',
+                  'border-[#1565C0] border-opacity-20',
+                  'border-[#FFD700] border-opacity-30'
                 ];
                 return (
                   <div
@@ -281,14 +281,14 @@ export default function AboutPage() {
                         <Icon className="w-8 h-8 text-white" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-2xl font-bold text-[#000080] mb-2">{edu.type}</h3>
+                        <h3 className="text-2xl font-bold text-[#1565C0] mb-2">{edu.type}</h3>
                         <p className="text-slate-700 leading-relaxed mb-3">{edu.description}</p>
                         {edu.tags && edu.tags.length > 0 && (
                           <div className="flex flex-wrap gap-2">
                             {edu.tags.map((tag, tagIndex) => (
                               <span
                                 key={tagIndex}
-                                className="px-3 py-1 bg-[#39B54A] bg-opacity-10 text-[#39B54A] rounded-full text-sm font-semibold"
+                                className="px-3 py-1 bg-[#4CAF50] bg-opacity-10 text-[#4CAF50] rounded-full text-sm font-semibold"
                               >
                                 {tag}
                               </span>
@@ -320,12 +320,12 @@ export default function AboutPage() {
               {config.achievements.map((achievement, index) => {
                 const Icon = getIcon(achievement.icon);
                 const gradients = [
-                  'from-[#FFF200] to-[#39B54A]',
-                  'from-[#000080] to-[#39B54A]',
-                  'from-[#39B54A] to-[#2A8F39]',
-                  'from-[#000080] to-[#FFF200]',
-                  'from-[#39B54A] to-[#000080]',
-                  'from-[#FFF200] to-[#000080]'
+                  'from-[#FFD700] to-[#4CAF50]',
+                  'from-[#1565C0] to-[#4CAF50]',
+                  'from-[#4CAF50] to-[#2E7D32]',
+                  'from-[#1565C0] to-[#FFD700]',
+                  'from-[#4CAF50] to-[#1565C0]',
+                  'from-[#FFD700] to-[#1565C0]'
                 ];
                 return (
                   <div
@@ -335,9 +335,9 @@ export default function AboutPage() {
                     <div className={`w-16 h-16 bg-gradient-to-br ${gradients[index % gradients.length]} rounded-lg flex items-center justify-center mb-6`}>
                       <Icon className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-[#000080] mb-3">{achievement.title}</h3>
+                    <h3 className="text-xl font-bold text-[#1565C0] mb-3">{achievement.title}</h3>
                     <p className="text-slate-600 leading-relaxed mb-4">{achievement.description}</p>
-                    <div className="text-sm font-semibold text-[#39B54A]">{achievement.year}</div>
+                    <div className="text-sm font-semibold text-[#4CAF50]">{achievement.year}</div>
                   </div>
                 );
               })}
@@ -359,7 +359,7 @@ export default function AboutPage() {
 
             <div className="relative">
               {/* Timeline Line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-[#39B54A] via-[#000080] to-[#39B54A] hidden md:block"></div>
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-[#4CAF50] via-[#1565C0] to-[#4CAF50] hidden md:block"></div>
 
               {/* Timeline Events */}
               <div className="space-y-12 md:space-y-0">
@@ -378,12 +378,12 @@ export default function AboutPage() {
                       <div className={`w-full md:w-1/2 ${isLeft ? 'md:pr-8 md:text-right' : 'md:pl-8 md:text-left'} text-center md:text-left`}>
                         <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
                           <div className={`flex items-center gap-4 mb-4 ${isLeft ? 'md:flex-row-reverse md:justify-end' : ''}`}>
-                            <div className="w-16 h-16 bg-gradient-to-br from-[#39B54A] to-[#000080] rounded-lg flex items-center justify-center flex-shrink-0">
+                            <div className="w-16 h-16 bg-gradient-to-br from-[#4CAF50] to-[#1565C0] rounded-lg flex items-center justify-center flex-shrink-0">
                               <Icon className="w-8 h-8 text-white" />
                             </div>
                             <div>
-                              <div className="text-2xl font-bold text-[#39B54A] mb-1">{event.year}</div>
-                              <h3 className="text-xl font-bold text-[#000080]">{event.title}</h3>
+                              <div className="text-2xl font-bold text-[#4CAF50] mb-1">{event.year}</div>
+                              <h3 className="text-xl font-bold text-[#1565C0]">{event.title}</h3>
                             </div>
                           </div>
                           <p className="text-slate-600 leading-relaxed">{event.description}</p>
@@ -391,13 +391,13 @@ export default function AboutPage() {
                       </div>
 
                       {/* Timeline Dot */}
-                      <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-white border-4 border-[#39B54A] rounded-full flex items-center justify-center z-10 hidden md:flex">
-                        <div className="w-4 h-4 bg-[#39B54A] rounded-full"></div>
+                      <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-white border-4 border-[#4CAF50] rounded-full flex items-center justify-center z-10 hidden md:flex">
+                        <div className="w-4 h-4 bg-[#4CAF50] rounded-full"></div>
                       </div>
 
                       {/* Year on Mobile */}
                       <div className="w-full md:w-1/2 flex justify-center md:hidden mb-4">
-                        <div className="w-12 h-12 bg-[#39B54A] rounded-full flex items-center justify-center">
+                        <div className="w-12 h-12 bg-[#4CAF50] rounded-full flex items-center justify-center">
                           <div className="text-white font-bold text-sm">{event.year}</div>
                         </div>
                       </div>
@@ -427,12 +427,12 @@ export default function AboutPage() {
                 return (
                   <div
                     key={index}
-                    className="text-center p-6 rounded-xl bg-gray-50 hover:bg-[#39B54A] hover:bg-opacity-5 transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 hover:border-[#39B54A] hover:border-opacity-30"
+                    className="text-center p-6 rounded-xl bg-gray-50 hover:bg-[#4CAF50] hover:bg-opacity-5 transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 hover:border-[#4CAF50] hover:border-opacity-30"
                   >
-                    <div className="w-16 h-16 bg-[#000080] rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 bg-[#1565C0] rounded-full flex items-center justify-center mx-auto mb-4">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-[#000080] mb-3">{value.title}</h3>
+                    <h3 className="text-xl font-bold text-[#1565C0] mb-3">{value.title}</h3>
                     <p className="text-slate-600">{value.description}</p>
                   </div>
                 );
@@ -442,7 +442,7 @@ export default function AboutPage() {
         </section>
 
         {/* Achievements Stats */}
-        <section className="py-20 bg-gradient-to-r from-[#000080] to-[#39B54A] text-white">
+        <section className="py-20 bg-gradient-to-r from-[#1565C0] to-[#4CAF50] text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Achievements</h2>
@@ -481,12 +481,12 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold text-center mb-12 text-slate-900">Get in Touch</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="w-16 h-16 bg-[#000080] rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-[#1565C0] rounded-full flex items-center justify-center mx-auto mb-4">
                   <Phone className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold mb-2 text-[#000080]">Phone</h3>
+                <h3 className="text-lg font-semibold mb-2 text-[#1565C0]">Phone</h3>
                 {contactInfo.phone ? (
-                  <a href={`tel:${contactInfo.phone}`} className="text-slate-600 hover:text-[#39B54A]">
+                  <a href={`tel:${contactInfo.phone}`} className="text-slate-600 hover:text-[#4CAF50]">
                     {contactInfo.phone}
                   </a>
                 ) : (
@@ -524,7 +524,7 @@ export default function AboutPage() {
         </section>
 
         {/* Footer */}
-        <footer className="bg-[#000080] text-white py-8">
+        <footer className="bg-[#1565C0] text-white py-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="mb-4">
               <img

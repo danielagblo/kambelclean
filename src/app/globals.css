@@ -3,13 +3,26 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  /* Kambel Consult Brand Colors */
-  --brand-green: #39B54A;
-  --brand-yellow: #FFF200;
-  --brand-blue: #000080;
-  --brand-dark-blue: #000060;
-  --brand-light-green: #5FD470;
-  --brand-dark-green: #2A8F39;
+  /* Kambel Consult Brand Colors - Directly from Logo */
+  /* Vibrant Green: From KAMBEL text and main graphic element */
+  --brand-green: #4CAF50;
+  --brand-green-light: #66BB6A;
+  --brand-green-dark: #2E7D32;
+  
+  /* Bright Yellow: From star fill in logo */
+  --brand-yellow: #FFD700;
+  --brand-yellow-light: #FFEB3B;
+  --brand-yellow-dark: #F9A825;
+  
+  /* Navy Blue: From CONSULT text */
+  --brand-blue: #1565C0;
+  --brand-blue-light: #42A5F5;
+  --brand-blue-dark: #0D47A1;
+  
+  /* Accent colors */
+  --brand-primary: var(--brand-green);
+  --brand-secondary: var(--brand-blue);
+  --brand-accent: var(--brand-yellow);
 }
 
 @theme inline {
