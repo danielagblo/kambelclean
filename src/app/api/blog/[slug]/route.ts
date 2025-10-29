@@ -41,10 +41,10 @@ const saveBlogPosts = (posts: BlogPost[]) => {
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ slug: string }> }
+  context: { params: Promise<{ slug: string }> }
 ) {
   try {
-    const { slug } = await params;
+    const { slug } = await context.params;
     const posts = loadBlogPosts();
     const post = posts.find(p => p.slug === slug);
 
@@ -74,10 +74,10 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: Promise<{ slug: string }> }
+  context: { params: Promise<{ slug: string }> }
 ) {
   try {
-    const { slug } = await params;
+    const { slug } = await context.params;
     const body = await request.json();
     const posts = loadBlogPosts();
     const index = posts.findIndex(p => p.slug === slug);
@@ -127,10 +127,10 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: Promise<{ slug: string }> }
+  context: { params: Promise<{ slug: string }> }
 ) {
   try {
-    const { slug } = await params;
+    const { slug } = await context.params;
     const posts = loadBlogPosts();
     const filtered = posts.filter(p => p.slug !== slug);
 

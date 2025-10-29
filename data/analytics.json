@@ -539,8 +539,50 @@
       "timestamp": "2025-10-28T11:44:56.505Z",
       "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
       "referrer": "Direct"
+    },
+    {
+      "page": "/",
+      "timestamp": "2025-10-29T13:16:15.851Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "Direct"
+    },
+    {
+      "page": "/landing",
+      "timestamp": "2025-10-29T13:16:16.907Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "Direct"
+    },
+    {
+      "page": "/publications",
+      "timestamp": "2025-10-29T13:16:31.455Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "Direct"
+    },
+    {
+      "page": "/blog",
+      "timestamp": "2025-10-29T13:16:33.891Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "Direct"
+    },
+    {
+      "page": "/masterclasses",
+      "timestamp": "2025-10-29T13:16:35.481Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "Direct"
+    },
+    {
+      "page": "/contact",
+      "timestamp": "2025-10-29T13:16:36.927Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "Direct"
+    },
+    {
+      "page": "/about",
+      "timestamp": "2025-10-29T13:16:38.627Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+      "referrer": "Direct"
     }
   ],
   "registrations": [],
-  "lastUpdated": "2025-10-28T11:44:56.505Z"
+  "lastUpdated": "2025-10-29T13:16:38.627Z"
 }
