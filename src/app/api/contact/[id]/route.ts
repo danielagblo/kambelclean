@@ -38,11 +38,12 @@ const saveMessages = (messages: ContactMessage[]) => {
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const messages = loadMessages();
-    const message = messages.find(m => m.id === params.id);
+    const message = messages.find(m => m.id === id);
 
     if (!message) {
       return NextResponse.json(
@@ -63,12 +64,13 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const body = await request.json();
     const messages = loadMessages();
-    const index = messages.findIndex(m => m.id === params.id);
+    const index = messages.findIndex(m => m.id === id);
 
     if (index === -1) {
       return NextResponse.json(
@@ -77,7 +79,7 @@ export async function PUT(
       );
     }
 
-    messages[index] = { ...messages[index], ...body, id: params.id };
+    messages[index] = { ...messages[index], ...body, id };
     saveMessages(messages);
 
     return NextResponse.json({
@@ -95,11 +97,12 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const messages = loadMessages();
-    const filtered = messages.filter(m => m.id !== params.id);
+    const filtered = messages.filter(m => m.id !== id);
 
     if (filtered.length === messages.length) {
       return NextResponse.json(

@@ -41,11 +41,12 @@ const saveBlogPosts = (posts: BlogPost[]) => {
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
+    const { slug } = await params;
     const posts = loadBlogPosts();
-    const post = posts.find(p => p.slug === params.slug);
+    const post = posts.find(p => p.slug === slug);
 
     if (!post) {
       return NextResponse.json(
@@ -55,7 +56,7 @@ export async function GET(
     }
 
     // Increment views
-    const index = posts.findIndex(p => p.slug === params.slug);
+    const index = posts.findIndex(p => p.slug === slug);
     if (index !== -1) {
       posts[index].views = (posts[index].views || 0) + 1;
       saveBlogPosts(posts);
@@ -73,12 +74,13 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
+    const { slug } = await params;
     const body = await request.json();
     const posts = loadBlogPosts();
-    const index = posts.findIndex(p => p.slug === params.slug);
+    const index = posts.findIndex(p => p.slug === slug);
 
     if (index === -1) {
       return NextResponse.json(
@@ -88,23 +90,23 @@ export async function PUT(
     }
 
     // Update slug if title changed
-    let slug = params.slug;
+    let newSlug = slug;
     if (body.title && body.title !== posts[index].title) {
-      slug = body.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+      newSlug = body.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
       // Ensure unique slug
-      let uniqueSlug = slug;
+      let uniqueSlug = newSlug;
       let counter = 1;
       while (posts.find(p => p.slug === uniqueSlug && p.id !== posts[index].id)) {
-        uniqueSlug = `${slug}-${counter}`;
+        uniqueSlug = `${newSlug}-${counter}`;
         counter++;
       }
-      slug = uniqueSlug;
+      newSlug = uniqueSlug;
     }
 
     posts[index] = { 
       ...posts[index], 
       ...body, 
-      slug,
+      slug: newSlug,
       id: posts[index].id,
       publishedDate: body.published && !posts[index].published ? new Date().toISOString() : posts[index].publishedDate
     };
@@ -125,11 +127,12 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
+    const { slug } = await params;
     const posts = loadBlogPosts();
-    const filtered = posts.filter(p => p.slug !== params.slug);
+    const filtered = posts.filter(p => p.slug !== slug);
 
     if (filtered.length === posts.length) {
       return NextResponse.json(
@@ -149,4 +152,3 @@ export async function DELETE(
     );
   }
 }
-

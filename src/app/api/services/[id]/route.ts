@@ -38,11 +38,12 @@ const saveServices = (services: ConsultancyService[]) => {
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const services = loadServices();
-    const service = services.find(s => s.id === params.id);
+    const service = services.find(s => s.id === id);
 
     if (!service) {
       return NextResponse.json(
@@ -63,12 +64,13 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const body = await request.json();
     const services = loadServices();
-    const index = services.findIndex(s => s.id === params.id);
+    const index = services.findIndex(s => s.id === id);
 
     if (index === -1) {
       return NextResponse.json(
@@ -77,7 +79,7 @@ export async function PUT(
       );
     }
 
-    services[index] = { ...services[index], ...body, id: params.id };
+    services[index] = { ...services[index], ...body, id };
     saveServices(services);
 
     return NextResponse.json({
@@ -95,11 +97,12 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const services = loadServices();
-    const filtered = services.filter(s => s.id !== params.id);
+    const filtered = services.filter(s => s.id !== id);
 
     if (filtered.length === services.length) {
       return NextResponse.json(

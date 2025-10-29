@@ -53,9 +53,10 @@ const saveMasterclasses = (masterclasses: Masterclass[]) => {
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const body = await request.json();
     const { name, email, phone, message } = body;
 
@@ -76,7 +77,7 @@ export async function POST(
     }
 
     const masterclasses = loadMasterclasses();
-    const masterclass = masterclasses.find(m => m.id === params.id);
+    const masterclass = masterclasses.find(m => m.id === id);
 
     if (!masterclass) {
       return NextResponse.json(
@@ -114,7 +115,7 @@ export async function POST(
 
     const registration: MasterclassRegistration = {
       id: Date.now().toString(),
-      masterclassId: params.id,
+      masterclassId: id,
       name,
       email,
       phone,
@@ -128,7 +129,7 @@ export async function POST(
       r => r.status !== 'cancelled'
     ).length;
     
-    const index = masterclasses.findIndex(m => m.id === params.id);
+    const index = masterclasses.findIndex(m => m.id === id);
     masterclasses[index] = masterclass;
     saveMasterclasses(masterclasses);
 

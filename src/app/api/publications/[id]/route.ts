@@ -39,11 +39,12 @@ const savePublications = (publications: Publication[]) => {
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const publications = loadPublications();
-    const publication = publications.find(p => p.id === params.id);
+    const publication = publications.find(p => p.id === id);
 
     if (!publication) {
       return NextResponse.json(
@@ -64,12 +65,13 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const body = await request.json();
     const publications = loadPublications();
-    const index = publications.findIndex(p => p.id === params.id);
+    const index = publications.findIndex(p => p.id === id);
 
     if (index === -1) {
       return NextResponse.json(
@@ -78,7 +80,7 @@ export async function PUT(
       );
     }
 
-    publications[index] = { ...publications[index], ...body, id: params.id };
+    publications[index] = { ...publications[index], ...body, id };
     savePublications(publications);
 
     return NextResponse.json({
@@ -96,11 +98,12 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const publications = loadPublications();
-    const filtered = publications.filter(p => p.id !== params.id);
+    const filtered = publications.filter(p => p.id !== id);
 
     if (filtered.length === publications.length) {
       return NextResponse.json(
