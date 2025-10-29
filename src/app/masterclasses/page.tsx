@@ -101,7 +101,7 @@ export default function MasterclassesPage() {
   };
 
   const isFull = (masterclass: Masterclass) => {
-    return masterclass.maxParticipants && masterclass.currentParticipants >= masterclass.maxParticipants;
+    return !!(masterclass.maxParticipants && masterclass.currentParticipants >= masterclass.maxParticipants);
   };
 
   return (
